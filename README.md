@@ -4,6 +4,7 @@ RPG-POO
 Trabalho de Programação Orientada a Objetos - UFG/INF 2014-1
 Autores: Enio Moura, Murilo Shindi e Douglas Pfeiffer
 
+Código Fonte: https://github.com/eniomoura/RPG-POO/tree/master/RPG-POO/src
 ===================================================================
 
 Checklist:
