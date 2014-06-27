@@ -2,7 +2,7 @@ RPG-POO
 ===================================================================
 
 Trabalho de Programação Orientada a Objetos - UFG/INF 2014-1
-Autores: Enio Moura e Douglas Pfeiffer
+Autores: Enio Moura, Murilo Shindi e Douglas Pfeiffer
 
 ===================================================================
 
