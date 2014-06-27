@@ -7,7 +7,7 @@ public class Historia{
 
     public static String consultaHistoria(){
         if(parteDaHistoria==-1){
-            return "<html><i><u><div align=center>ISSO AQUI É FODENDO HTML</div></u></i><br></html>";
+            return "<html><div align=center><i><u>ISSO AQUI É FODENDO HTML</u></i></div><br></html>";
         }else if(parteDaHistoria==0){
             return "Deseja ir aos campos de arroz?";
         }else if(parteDaHistoria==1){
