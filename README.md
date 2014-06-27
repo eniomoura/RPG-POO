@@ -5,10 +5,9 @@ Trabalho de Programação Orientada a Objetos - UFG/INF 2014-1
 Autores: Enio Moura, Murilo Shindi e Douglas Pfeiffer
 
 Código Fonte: https://github.com/eniomoura/RPG-POO/tree/master/RPG-POO/src
+
+Checklist
 ===================================================================
-
-Checklist:
-
 Iniciar projeto                                         :: OK
 
 Ver o que já tínhamos pronto                            :: OK
