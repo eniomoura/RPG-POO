@@ -7,6 +7,7 @@ package ClassesJogo;
  *   final de save game.
  */
 public class InfoChar{
+
     public static String nome;
     public static String classe;
     public static String sexo;

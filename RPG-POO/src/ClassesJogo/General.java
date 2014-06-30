@@ -9,7 +9,7 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 public class General{
-    
+
     static Formatter save;
     static Scanner load;
     private static boolean ingame=false;
@@ -27,23 +27,23 @@ public class General{
     }
 
     public static void save(){ //Salva o valor Historia.PartedaHistoria em um arquivo. Método primitivo. Precisa ser atualizado.
-        try{
-            save = new Formatter("savegame.sav");
+        try {
+            save=new Formatter("savegame.sav");
             save.format("%d", Historia.parteDaHistoria);
             save.close();
             JOptionPane.showMessageDialog(null, "Jogo salvo com sucesso!");
-        }catch(FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             JOptionPane.showMessageDialog(null, "Erro ao salvar jogo.");
         }
     }
 
     public static void load(){ //Recupera o valor Historia.ParteDaHistoria do arquivo. Método primitivo. Precisa ser atualizado.
-        try{
-            load = new Scanner(new File("savegame.sav"));
+        try {
+            load=new Scanner(new File("savegame.sav"));
             Historia.parteDaHistoria=load.nextInt();
             PainelJogo.atualizar();
             load.close();
-        }catch(FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             JOptionPane.showMessageDialog(null, "Erro ao carregar jogo.");
         }
     }

@@ -19,9 +19,9 @@ public class PainelJogo extends JPanel{
     //Declaração de variáveis.
     public static JLabel display;
     public static JPanel caixausuario;
-    public static JButton button1 = new JButton("BUTTON1");
-    public static JButton button2 = new JButton("BUTTON2");
-    public static JTextField textfield1 = new JTextField(20);
+    public static JButton button1=new JButton("BUTTON1");
+    public static JButton button2=new JButton("BUTTON2");
+    public static JTextField textfield1=new JTextField(20);
 
     PainelJogo(){  //Construtor da interface de jogo padrão
         super(new GridLayout(0, 1));
@@ -67,7 +67,7 @@ public class PainelJogo extends JPanel{
             button2.setVisible(false);
         }else if(Historia.parteDaHistoria==5){
         }else{
-        
+
         }
     }
 
@@ -95,27 +95,19 @@ public class PainelJogo extends JPanel{
                 if(event.getSource()==button1){
                     if(Historia.parteDaHistoria==0){
                         InfoChar.nome=textfield1.getText();
-                        ClassesJogo.Historia.parteDaHistoria++;
                         textfield1.setText("");
-                        PainelChar.atualizar();
                     }else if(Historia.parteDaHistoria==1){
-                        ClassesJogo.Historia.parteDaHistoria++;
                         InfoChar.sexo="Masculino";
-                        PainelChar.atualizar();
                     }else if(Historia.parteDaHistoria==2){
-                        ClassesJogo.Historia.parteDaHistoria++;
-                        InfoChar.classe=("Masculino".equals(InfoChar.sexo)?"Paladino":"Paladina");
-                        PainelChar.atualizar();
+                        InfoChar.classe=("Masculino".equals(InfoChar.sexo) ? "Paladino" : "Paladina");
                     }else if(Historia.parteDaHistoria==3){
-                        ClassesJogo.Historia.parteDaHistoria++;
                         InfoChar.forca+=5;
-                        PainelChar.atualizar();
                     }else if(Historia.parteDaHistoria==4){
-                        ClassesJogo.Historia.parteDaHistoria++;
                     }else if(Historia.parteDaHistoria==5){
                     }else{
-                    
                     }
+                    ClassesJogo.Historia.parteDaHistoria++;
+                    PainelChar.atualizar();
                     PainelJogo.atualizar();
                 }else if(event.getSource()==button2){
                     if(Historia.parteDaHistoria==0){
@@ -125,7 +117,8 @@ public class PainelJogo extends JPanel{
                         PainelChar.atualizar();
                     }else if(Historia.parteDaHistoria==2){
                         ClassesJogo.Historia.parteDaHistoria++;
-                        InfoChar.classe=("Masculino".equals(InfoChar.sexo)?"Bruxo":"Bruxa");
+                        InfoChar.classe=("Masculino".equals(InfoChar.sexo) ? "Bruxo" : "Bruxa");
+                        PainelChar.atualizar();
                     }else if(Historia.parteDaHistoria==3){
                         InfoChar.inteligencia+=5;
                         ClassesJogo.Historia.parteDaHistoria++;
@@ -134,7 +127,7 @@ public class PainelJogo extends JPanel{
                         ClassesJogo.Historia.parteDaHistoria++;
                     }else if(Historia.parteDaHistoria==5){
                     }else{
-                    
+
                     }
                     PainelJogo.atualizar();
                 }

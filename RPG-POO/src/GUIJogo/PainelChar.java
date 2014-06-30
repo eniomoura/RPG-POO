@@ -15,11 +15,13 @@ import java.awt.GridLayout;
  * informações de personagem.
  */
 public class PainelChar extends JPanel{
-    public static JLabel player = new JLabel("Nome: "+InfoChar.nome+("Masculino".equals(InfoChar.sexo) ?", o ":", a ")+InfoChar.classe);
-    public static JLabel sexo = new JLabel(InfoChar.sexo);
-    public static JLabel forca = new JLabel("Força: "+Integer.toString(InfoChar.forca));
-    public static JLabel inteligencia = new JLabel("Inteligência: "+Integer.toString(InfoChar.inteligencia));
-    static JPanel playerstats = new JPanel(new GridLayout(0,1));
+
+    public static JLabel player=new JLabel("Nome: "+InfoChar.nome+("Masculino".equals(InfoChar.sexo) ? ", o " : ", a ")+InfoChar.classe);
+    public static JLabel sexo=new JLabel(InfoChar.sexo);
+    public static JLabel forca=new JLabel("Força: "+Integer.toString(InfoChar.forca));
+    public static JLabel inteligencia=new JLabel("Inteligência: "+Integer.toString(InfoChar.inteligencia));
+    static JPanel playerstats=new JPanel(new GridLayout(0, 1));
+
     PainelChar(){
         //CONFIGURAÇÃO BÁSICA DO PAINEL
         super(new BorderLayout());
@@ -32,23 +34,24 @@ public class PainelChar extends JPanel{
         playerstats.add(forca);
         playerstats.add(inteligencia);
     }
-    
-    public static void atualizar(){
-        if(Historia.parteDaHistoria==0){
+
+    public static void atualizar(){ //Atualiza o painel
+        if(Historia.parteDaHistoria==0){ //Novo Jogo. Nome, sexo e classe ainda indefinidos.
             player.setVisible(false);
             playerstats.setVisible(false);
-        }else if(Historia.parteDaHistoria==1){
+        }else if(Historia.parteDaHistoria==1){ //Nome definido.
             player.setText("Nome: "+InfoChar.nome);
             player.setVisible(true);
-        }else if(Historia.parteDaHistoria==2){
+        }else if(Historia.parteDaHistoria==2){ //Sexo definido. Aparecem os stats.
             player.setText("Nome: "+InfoChar.nome);
-            sexo.setText("Sexo: "+ InfoChar.sexo);
+            sexo.setText("Sexo: "+InfoChar.sexo);
             forca.setText("Força: "+Integer.toString(InfoChar.forca));
             inteligencia.setText("Inteligência: "+Integer.toString(InfoChar.inteligencia));
             playerstats.setVisible(true);
-        }else{
-            player.setText("Nome: "+InfoChar.nome+("Masculino".equals(InfoChar.sexo) ?", o ":", a ")+InfoChar.classe);
-            sexo.setText("Sexo: "+ InfoChar.sexo);
+        }else{ //Ficha de personagem já construída. Todos os dados dispostsos.
+            player.setText("Nome: "+InfoChar.nome+("Masculino".equals(InfoChar.sexo) ? ", o " : ", a ")+InfoChar.classe);
+            sexo.setText("Sexo: "+InfoChar.sexo);
+            forca.setText("Força: "+Integer.toString(InfoChar.forca));
             inteligencia.setText("Inteligência: "+Integer.toString(InfoChar.inteligencia));
             playerstats.setVisible(true);
         }
