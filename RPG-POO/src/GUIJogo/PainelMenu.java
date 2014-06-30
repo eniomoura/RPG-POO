@@ -50,9 +50,16 @@ public class PainelMenu extends JPanel{ //Classe para a disposição dos botões
 
         public void actionPerformed(ActionEvent event){
             if(event.getSource()==novoJogo){
-                ClassesJogo.General.setIngame(true);
-                ClassesJogo.Historia.parteDaHistoria=0;
-                PainelJogo.atualizar();
+                if(General.isIngame()){
+                    int a=JOptionPane.showConfirmDialog(null, "Se iniciar um novo jogo, todo o progresso não salvo será perdido!\nTem certeza que deseja iniciar um novo jogo?", "Novo Jogo", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+                    if(a==JOptionPane.YES_OPTION){
+                        General.reset();
+                    }
+                }else{
+                    ClassesJogo.General.setIngame(true);
+                    ClassesJogo.Historia.parteDaHistoria=0;
+                    PainelJogo.atualizar();
+                }
             }else if(event.getSource()==salvar){
                 General.save();
             }else if(event.getSource()==carregar){
