@@ -1,5 +1,6 @@
 package ClassesJogo;
 
+import GUIJogo.PainelChar;
 import GUIJogo.PainelJogo;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -13,12 +14,19 @@ public class General{
     static Scanner load;
     private static boolean ingame=false;
 
-    public static void reset(){ //Volta a tela inicial do jogo. Método primitivo.
+    public static void reset(){ //Volta a tela inicial do jogo. Método primitivo. Precisa ser atualizado.
         Historia.parteDaHistoria=0;
+        InfoChar.forca=5;
+        InfoChar.inteligencia=5;
+        InfoChar.nome=null;
+        InfoChar.sexo=null;
+        InfoChar.classe=null;
+        PainelJogo.textfield1.setText(null);
         PainelJogo.atualizar();
+        PainelChar.atualizar();
     }
 
-    public static void save(){ //Salva o valor Historia.PartedaHistoria em um arquivo. Método primitivo.
+    public static void save(){ //Salva o valor Historia.PartedaHistoria em um arquivo. Método primitivo. Precisa ser atualizado.
         try{
             save = new Formatter("savegame.sav");
             save.format("%d", Historia.parteDaHistoria);
@@ -29,7 +37,7 @@ public class General{
         }
     }
 
-    public static void load(){ //Recupera o valor Historia.ParteDaHistoria do arquivo. Método primitivo.
+    public static void load(){ //Recupera o valor Historia.ParteDaHistoria do arquivo. Método primitivo. Precisa ser atualizado.
         try{
             load = new Scanner(new File("savegame.sav"));
             Historia.parteDaHistoria=load.nextInt();

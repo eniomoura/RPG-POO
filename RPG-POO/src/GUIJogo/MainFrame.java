@@ -4,7 +4,8 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 
 /*
- * Essa classe tem a finalidade de criar a janela principal do jogo.
+ * Essa classe tem a finalidade de criar a janela principal do programa,
+* e inicializar valores do jogo.
  */
 public class MainFrame extends JFrame{
 
@@ -27,5 +28,9 @@ public class MainFrame extends JFrame{
         add(menu, BorderLayout.LINE_START);
         add(principal, BorderLayout.CENTER);
         add(menuchar, BorderLayout.PAGE_END);
+        
+        //INICIALIZACAO DE VALORES
+        ClassesJogo.InfoChar.forca=5;
+        ClassesJogo.InfoChar.inteligencia=5;
     }
 }
