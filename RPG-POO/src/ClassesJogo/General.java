@@ -54,6 +54,9 @@ public class General{
                 PainelChar.atualizar();
             }
         } catch (EOFException e) {
+            //Fim de arquivo atingido, carregar novos dados
+            PainelJogo.atualizar();
+            PainelChar.atualizar();
         } catch (IOException|ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "Erro ao carregar jogo.");
         }
