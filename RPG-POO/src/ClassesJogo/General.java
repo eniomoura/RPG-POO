@@ -49,14 +49,14 @@ public class General{
                 InfoChar.nome=loadedData.getNome();
                 InfoChar.sexo=loadedData.getSexo();
                 Historia.parteDaHistoria=loadedData.getHistoria();
+                //Atualiza a tela com os novos dados
+                PainelJogo.atualizar();
+                PainelChar.atualizar();
             }
         } catch (EOFException e) {
         } catch (IOException|ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "Erro ao carregar jogo.");
         }
-        //Atualiza a tela com os novos dados
-        PainelJogo.atualizar();
-        PainelChar.atualizar();
     }
 
     public static boolean isIngame(){
