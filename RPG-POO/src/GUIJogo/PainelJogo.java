@@ -8,6 +8,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /*
@@ -34,38 +35,40 @@ public class PainelJogo extends JPanel{
 
     public static void atualizar(){ //Redefine a saída e as entradas da tela
         display.setText(Historia.consultaHistoria());
-        if(Historia.parteDaHistoria==-1){
+        if(Historia.getParteDaHistoria()==-1){
             textfield1.setVisible(false);
             button1.setVisible(false);
             button2.setVisible(false);
-        }else if(Historia.parteDaHistoria==0){
+        }else if(Historia.getParteDaHistoria()==0){
             textfield1.setVisible(true);
             button1.setText("Continuar");
             button1.setVisible(true);
             button2.setVisible(false);
-        }else if(Historia.parteDaHistoria==1){
+        }else if(Historia.getParteDaHistoria()==1){
             textfield1.setVisible(false);
             button1.setText("Homem");
             button2.setText("Mulher");
             button1.setVisible(true);
             button2.setVisible(true);
-        }else if(Historia.parteDaHistoria==2){
+        }else if(Historia.getParteDaHistoria()==2){
             textfield1.setVisible(false);
             button1.setText("Paladino");
             button2.setText("Bruxo");
             button1.setVisible(true);
             button2.setVisible(true);
-        }else if(Historia.parteDaHistoria==3){
+        }else if(Historia.getParteDaHistoria()==3){
             textfield1.setVisible(false);
             button1.setText("Força");
             button2.setText("Inteligência");
             button1.setVisible(true);
             button2.setVisible(true);
-        }else if(Historia.parteDaHistoria==4){
+        }else if(Historia.getParteDaHistoria()==4){
             textfield1.setVisible(false);
-            button1.setVisible(false);
-            button2.setVisible(false);
-        }else if(Historia.parteDaHistoria==5){
+            button1.setText("Cano");
+            button2.setText("Castelo");
+            button1.setVisible(true);
+            button2.setVisible(true);
+        }else if(Historia.getParteDaHistoria()==5){
         }else{
 
         }
@@ -97,34 +100,34 @@ public class PainelJogo extends JPanel{
             //IMPLEMENTAÇÃO DAS AÇÕES DOS BOTÕES
             public void actionPerformed(ActionEvent event){
                 if(event.getSource()==button1){ //Caso pressionado o primeiro botão...
-                    if(Historia.parteDaHistoria==0){
+                    if(Historia.getParteDaHistoria()==0){
                         InfoChar.nome=textfield1.getText(); //obter nome do personagem
                         textfield1.setText("");
-                    }else if(Historia.parteDaHistoria==1){
+                    }else if(Historia.getParteDaHistoria()==1){
                         InfoChar.sexo="Masculino"; //homem
-                    }else if(Historia.parteDaHistoria==2){
+                    }else if(Historia.getParteDaHistoria()==2){
                         InfoChar.classe=("Masculino".equals(InfoChar.sexo) ? "Paladino" : "Paladina"); //paladin
-                    }else if(Historia.parteDaHistoria==3){
+                    }else if(Historia.getParteDaHistoria()==3){
                         InfoChar.forca+=5; //força
-                    }else if(Historia.parteDaHistoria==4){
-                        //não implementado
-                    }else if(Historia.parteDaHistoria==5){
+                    }else if(Historia.getParteDaHistoria()==4){
+                        JOptionPane.showMessageDialog(null, "Não implementado");
+                    }else if(Historia.getParteDaHistoria()==5){
                     }else{
                     } //após, exibe a próxima tela:
                     ClassesJogo.Historia.parteDaHistoria++;
                     PainelChar.atualizar();
                     PainelJogo.atualizar();
                 }else if(event.getSource()==button2){ //Caso pressionado o segundo botão...
-                    if(Historia.parteDaHistoria==0){ //não há segundo botão
-                    }else if(Historia.parteDaHistoria==1){
+                    if(Historia.getParteDaHistoria()==0){ //não há segundo botão
+                    }else if(Historia.getParteDaHistoria()==1){
                         InfoChar.sexo="Feminino"; //mulher
-                    }else if(Historia.parteDaHistoria==2){
+                    }else if(Historia.getParteDaHistoria()==2){
                         InfoChar.classe=("Masculino".equals(InfoChar.sexo) ? "Bruxo" : "Bruxa"); //witch
-                    }else if(Historia.parteDaHistoria==3){
+                    }else if(Historia.getParteDaHistoria()==3){
                         InfoChar.inteligencia+=5; //inteligencia
-                    }else if(Historia.parteDaHistoria==4){
-                        //não implementado
-                    }else if(Historia.parteDaHistoria==5){
+                    }else if(Historia.getParteDaHistoria()==4){
+                        //Continue
+                    }else if(Historia.getParteDaHistoria()==5){
                     }else{
                     } //após, exibe a próxima tela:
                     ClassesJogo.Historia.parteDaHistoria++;

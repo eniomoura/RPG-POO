@@ -16,13 +16,14 @@ public class FileData implements Serializable{
     private int forca;
     private int inteligencia;
     private int experiencia;
-    public int dinheiro;
+    private int dinheiro;
+    private int hp;
 
     public FileData(){ //Construtor de FileData inicializa uma instância com atributos de outras classes
         this.nome=InfoChar.nome;
         this.classe=InfoChar.classe;
         this.sexo=InfoChar.sexo;
-        this.historia=Historia.parteDaHistoria;
+        this.historia=Historia.getParteDaHistoria();
         this.forca=InfoChar.forca;
         this.inteligencia=InfoChar.inteligencia;
         this.experiencia=InfoChar.experiencia;

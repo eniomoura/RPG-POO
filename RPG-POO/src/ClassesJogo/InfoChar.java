@@ -13,4 +13,5 @@ public class InfoChar{
     public static int inteligencia;
     public static int experiencia;
     public static int dinheiro;
+    public static int hp;
 }

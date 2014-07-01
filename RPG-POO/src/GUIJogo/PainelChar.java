@@ -21,6 +21,7 @@ public class PainelChar extends JPanel{
     public static JLabel inteligencia=new JLabel("Inteligência: "+Integer.toString(InfoChar.inteligencia));
     public static JLabel experiencia=new JLabel("EXP: "+Integer.toString(InfoChar.experiencia));
     public static JLabel dinheiro=new JLabel("Moedas: "+Integer.toString(InfoChar.dinheiro));
+    public static JLabel hp= new JLabel("HP: "+Integer.toString(InfoChar.hp));
     public static JPanel stats1 = new JPanel(new GridLayout(0,2));
     public static JPanel stats2 = new JPanel(new GridLayout(0,2));
     public static JPanel stats3 = new JPanel(new GridLayout(0,2));
@@ -44,6 +45,7 @@ public class PainelChar extends JPanel{
         stats2.add(experiencia);
         stats1.add(new JLabel(""));
         stats2.add(dinheiro);
+        stats2.add(hp);
         stats3.add(new JLabel(""));
         player.setVisible(false);
         add(player, BorderLayout.PAGE_START);
@@ -53,15 +55,15 @@ public class PainelChar extends JPanel{
     }
 
     public static void atualizar(){ //Atualiza o painel
-        if(Historia.parteDaHistoria==0){ //Novo Jogo. Nome, sexo e classe ainda indefinidos.
+        if(Historia.getParteDaHistoria()==0){ //Novo Jogo. Nome, sexo e classe ainda indefinidos.
             player.setVisible(false);
             stats1.setVisible(false);
             stats2.setVisible(false);
             stats3.setVisible(false);
-        }else if(Historia.parteDaHistoria==1){ //Nome definido.
+        }else if(Historia.getParteDaHistoria()==1){ //Nome definido.
             player.setText("Nome: "+InfoChar.nome);
             player.setVisible(true);
-        }else if(Historia.parteDaHistoria==2){ //Sexo definido. Aparecem os stats.
+        }else if(Historia.getParteDaHistoria()==2){ //Sexo definido. Aparecem os stats.
             player.setText("Nome: "+InfoChar.nome);
             player.setVisible(true);
             sexo.setText("Sexo: "+InfoChar.sexo);
@@ -77,6 +79,7 @@ public class PainelChar extends JPanel{
             stats1.setVisible(true);
             experiencia.setText("EXP: "+Integer.toString(InfoChar.experiencia));
             dinheiro.setText("Moedas: "+Integer.toString(InfoChar.dinheiro));
+            hp.setText("HP: "+(Integer.toString(InfoChar.hp)));
             stats2.setVisible(true);
             stats3.setVisible(true);
         }
