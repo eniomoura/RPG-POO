@@ -8,7 +8,6 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /*
@@ -64,8 +63,8 @@ public class PainelJogo extends JPanel{
             button2.setVisible(true);
         }else if(Historia.getParteDaHistoria()==4){
             textfield1.setVisible(false);
-            button1.setText("Cano");
-            button2.setText("Castelo");
+            button1.setText("154");
+            button2.setText("152");
             button1.setVisible(true);
             button2.setVisible(true);
         }else if(Historia.getParteDaHistoria()==5){
@@ -110,7 +109,7 @@ public class PainelJogo extends JPanel{
                     }else if(Historia.getParteDaHistoria()==3){
                         InfoChar.forca+=5; //força
                     }else if(Historia.getParteDaHistoria()==4){
-                        JOptionPane.showMessageDialog(null, "Não implementado");
+                        Historia.decisao=1;
                     }else if(Historia.getParteDaHistoria()==5){
                     }else{
                     } //após, exibe a próxima tela:
@@ -126,7 +125,7 @@ public class PainelJogo extends JPanel{
                     }else if(Historia.getParteDaHistoria()==3){
                         InfoChar.inteligencia+=5; //inteligencia
                     }else if(Historia.getParteDaHistoria()==4){
-                        //Continue
+                        Historia.decisao=2;
                     }else if(Historia.getParteDaHistoria()==5){
                     }else{
                     } //após, exibe a próxima tela:

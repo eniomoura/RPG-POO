@@ -15,7 +15,7 @@ public class General{
     static ObjectOutputStream save;
     static ObjectInputStream load;
     private static boolean ingame=false;
-
+    
     public static void reset(){ //Volta a tela inicial do jogo.
         InfoChar.forca=5;
         InfoChar.inteligencia=5;
