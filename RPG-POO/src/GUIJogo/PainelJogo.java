@@ -32,7 +32,7 @@ public class PainelJogo extends JPanel{
         add(caixausuario);
     }
 
-    public static void atualizar(){ //Atualiza a string exibida de acordo com a função em ClassesJogo.Historia
+    public static void atualizar(){ //Redefine a saída e as entradas da tela
         display.setText(Historia.consultaHistoria());
         if(Historia.parteDaHistoria==-1){
             textfield1.setVisible(false);
@@ -78,12 +78,15 @@ public class PainelJogo extends JPanel{
     class UserInput extends JPanel{
 
         public UserInput(){
+            //CONSTRUÇÃO DO PAINEL DE ENTRADA DO USUÁRIO
             add(textfield1);
             textfield1.setVisible(false);
             add(button1);
             button1.setVisible(false);
             add(button2);
             button2.setVisible(false);
+
+            //DECLARAÇÃO DE HANDLERS
             ButtonHandler handler=new ButtonHandler();
             button1.addActionListener(handler);
             button2.addActionListener(handler);
@@ -91,44 +94,41 @@ public class PainelJogo extends JPanel{
 
         private class ButtonHandler implements ActionListener{
 
+            //IMPLEMENTAÇÃO DAS AÇÕES DOS BOTÕES
             public void actionPerformed(ActionEvent event){
-                if(event.getSource()==button1){
+                if(event.getSource()==button1){ //Caso pressionado o primeiro botão...
                     if(Historia.parteDaHistoria==0){
-                        InfoChar.nome=textfield1.getText();
+                        InfoChar.nome=textfield1.getText(); //obter nome do personagem
                         textfield1.setText("");
                     }else if(Historia.parteDaHistoria==1){
-                        InfoChar.sexo="Masculino";
+                        InfoChar.sexo="Masculino"; //homem
                     }else if(Historia.parteDaHistoria==2){
-                        InfoChar.classe=("Masculino".equals(InfoChar.sexo) ? "Paladino" : "Paladina");
+                        InfoChar.classe=("Masculino".equals(InfoChar.sexo) ? "Paladino" : "Paladina"); //paladin
                     }else if(Historia.parteDaHistoria==3){
-                        InfoChar.forca+=5;
+                        InfoChar.forca+=5; //força
                     }else if(Historia.parteDaHistoria==4){
+                        //não implementado
                     }else if(Historia.parteDaHistoria==5){
                     }else{
-                    }
+                    } //após, exibe a próxima tela:
                     ClassesJogo.Historia.parteDaHistoria++;
                     PainelChar.atualizar();
                     PainelJogo.atualizar();
-                }else if(event.getSource()==button2){
-                    if(Historia.parteDaHistoria==0){
+                }else if(event.getSource()==button2){ //Caso pressionado o segundo botão...
+                    if(Historia.parteDaHistoria==0){ //não há segundo botão
                     }else if(Historia.parteDaHistoria==1){
-                        ClassesJogo.Historia.parteDaHistoria++;
-                        InfoChar.sexo="Feminino";
-                        PainelChar.atualizar();
+                        InfoChar.sexo="Feminino"; //mulher
                     }else if(Historia.parteDaHistoria==2){
-                        ClassesJogo.Historia.parteDaHistoria++;
-                        InfoChar.classe=("Masculino".equals(InfoChar.sexo) ? "Bruxo" : "Bruxa");
-                        PainelChar.atualizar();
+                        InfoChar.classe=("Masculino".equals(InfoChar.sexo) ? "Bruxo" : "Bruxa"); //witch
                     }else if(Historia.parteDaHistoria==3){
-                        InfoChar.inteligencia+=5;
-                        ClassesJogo.Historia.parteDaHistoria++;
-                        PainelChar.atualizar();
+                        InfoChar.inteligencia+=5; //inteligencia
                     }else if(Historia.parteDaHistoria==4){
-                        ClassesJogo.Historia.parteDaHistoria++;
+                        //não implementado
                     }else if(Historia.parteDaHistoria==5){
                     }else{
-
-                    }
+                    } //após, exibe a próxima tela:
+                    ClassesJogo.Historia.parteDaHistoria++;
+                    PainelChar.atualizar();
                     PainelJogo.atualizar();
                 }
             }

@@ -1,10 +1,8 @@
 package ClassesJogo;
 
 /*
- *   Essa classe tem a finalidade de armazenar as informações sobre o jogador.
- *   Possibilidade: Guardar todas as informações do jogo,
- *   serializar a classe e salvá-la num arquivo, como método
- *   final de save game.
+ *   Essa classe tem a finalidade de armazenar as informações sobre o jogador
+ * durante o jogo.
  */
 public class InfoChar{
 

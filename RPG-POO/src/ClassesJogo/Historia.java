@@ -1,8 +1,10 @@
 package ClassesJogo;
 
+/*
+ * Essa classe tem a finalidade de retornar a saída de texto para a GUI.
+ */
 public class Historia{
 
-    //Essa classe é placeholder e deve ser inteiramente modificada.
     public static int parteDaHistoria=-1;
 
     public static String consultaHistoria(){

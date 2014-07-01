@@ -15,7 +15,7 @@ import java.awt.GridLayout;
  * informações de personagem.
  */
 public class PainelChar extends JPanel{
-
+    //ATRIBUIÇÕES INICIAIS DO PAINEL
     public static JLabel player=new JLabel("Nome: "+InfoChar.nome+("Masculino".equals(InfoChar.sexo) ? ", o " : ", a ")+InfoChar.classe);
     public static JLabel sexo=new JLabel(InfoChar.sexo);
     public static JLabel forca=new JLabel("Força: "+Integer.toString(InfoChar.forca));
