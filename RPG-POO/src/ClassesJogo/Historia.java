@@ -23,10 +23,9 @@ public class Historia{
             return ("À sua esquerda está a sala 154 e à sua direita está a sala 152");
         }else if(getParteDaHistoria()==5){
             if(decisao==1){
-                
                 return ("placeholder");
             }else{
-                return("placeholder encontro: prof ed1");
+                return("");
             }
         }else if(getParteDaHistoria()==6){
             return ("");

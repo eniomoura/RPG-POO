@@ -19,6 +19,7 @@ public class General{
     public static void reset(){ //Volta a tela inicial do jogo.
         InfoChar.forca=5;
         InfoChar.inteligencia=5;
+        InfoChar.hp=100;
         InfoChar.dinheiro=300;
         InfoChar.nome=null;
         InfoChar.sexo=null;
@@ -55,6 +56,7 @@ public class General{
                 InfoChar.sexo=loadedData.getSexo();
                 InfoChar.experiencia=loadedData.getExperiencia();
                 InfoChar.dinheiro=loadedData.getDinheiro();
+                InfoChar.hp=loadedData.getHp();
                 Historia.parteDaHistoria=loadedData.getHistoria();
                 //Atualiza a tela com os novos dados
                 PainelJogo.atualizar();
