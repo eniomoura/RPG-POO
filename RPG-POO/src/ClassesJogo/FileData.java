@@ -12,9 +12,11 @@ public class FileData implements Serializable{
     private String nome;
     private String classe;
     private String sexo;
-    public int historia;
+    private int historia;
     private int forca;
     private int inteligencia;
+    private int experiencia;
+    public int dinheiro;
 
     public FileData(){ //Construtor de FileData inicializa uma instância com atributos de outras classes
         this.nome=InfoChar.nome;
@@ -23,6 +25,8 @@ public class FileData implements Serializable{
         this.historia=Historia.parteDaHistoria;
         this.forca=InfoChar.forca;
         this.inteligencia=InfoChar.inteligencia;
+        this.experiencia=InfoChar.experiencia;
+        this.dinheiro=InfoChar.dinheiro;
     }
 
     public String getClasse(){
@@ -47,5 +51,13 @@ public class FileData implements Serializable{
 
     public int getHistoria(){
         return historia;
+    }
+
+    public int getExperiencia(){
+        return experiencia;
+    }
+
+    public int getDinheiro(){
+        return dinheiro;
     }
 }

@@ -17,15 +17,20 @@ public class General{
     private static boolean ingame=false;
 
     public static void reset(){ //Volta a tela inicial do jogo.
-        Historia.parteDaHistoria=0;
         InfoChar.forca=5;
         InfoChar.inteligencia=5;
+        InfoChar.dinheiro=300;
         InfoChar.nome=null;
         InfoChar.sexo=null;
         InfoChar.classe=null;
         PainelJogo.textfield1.setText(null);
-        PainelJogo.atualizar();
-        PainelChar.atualizar();
+        if(ingame){
+            Historia.parteDaHistoria=0;
+            PainelJogo.atualizar();
+            PainelChar.atualizar();
+        }else{
+            Historia.parteDaHistoria=-1;
+        }
     }
 
     public static void save(){ //Salva uma instância de FileData em um arquivo.
@@ -48,10 +53,13 @@ public class General{
                 InfoChar.inteligencia=loadedData.getInteligencia();
                 InfoChar.nome=loadedData.getNome();
                 InfoChar.sexo=loadedData.getSexo();
+                InfoChar.experiencia=loadedData.getExperiencia();
+                InfoChar.dinheiro=loadedData.getDinheiro();
                 Historia.parteDaHistoria=loadedData.getHistoria();
                 //Atualiza a tela com os novos dados
                 PainelJogo.atualizar();
                 PainelChar.atualizar();
+                ingame=true;
             }
         } catch (EOFException e) {
             //Fim de arquivo atingido, carregar novos dados

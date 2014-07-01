@@ -11,4 +11,6 @@ public class InfoChar{
     public static String sexo;
     public static int forca;
     public static int inteligencia;
+    public static int experiencia;
+    public static int dinheiro;
 }

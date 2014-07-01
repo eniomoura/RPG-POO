@@ -30,7 +30,6 @@ public class MainFrame extends JFrame{
         add(menuchar, BorderLayout.PAGE_END);
 
         //INICIALIZACAO DE VALORES
-        ClassesJogo.InfoChar.forca=5;
-        ClassesJogo.InfoChar.inteligencia=5;
+        ClassesJogo.General.reset();
     }
 }
