@@ -34,42 +34,59 @@ public class PainelJogo extends JPanel{
 
     public static void atualizar(){ //Redefine a saída e as entradas da tela
         display.setText(Historia.consultaHistoria());
-        if(Historia.getParteDaHistoria()==-1){
+        if(Historia.parteDaHistoria==-1){
             textfield1.setVisible(false);
             button1.setVisible(false);
             button2.setVisible(false);
-        }else if(Historia.getParteDaHistoria()==0){
+            PainelMenu.salvar.setEnabled(false);
+        }else if(Historia.parteDaHistoria==0){
             textfield1.setVisible(true);
             button1.setText("Continuar");
             button1.setVisible(true);
             button2.setVisible(false);
-        }else if(Historia.getParteDaHistoria()==1){
+            PainelMenu.salvar.setEnabled(true);
+        }else if(Historia.parteDaHistoria==1){
             textfield1.setVisible(false);
             button1.setText("Homem");
             button2.setText("Mulher");
             button1.setVisible(true);
             button2.setVisible(true);
-        }else if(Historia.getParteDaHistoria()==2){
+        }else if(Historia.parteDaHistoria==2){
             textfield1.setVisible(false);
             button1.setText("Paladino");
             button2.setText("Bruxo");
             button1.setVisible(true);
             button2.setVisible(true);
-        }else if(Historia.getParteDaHistoria()==3){
+        }else if(Historia.parteDaHistoria==3){
             textfield1.setVisible(false);
             button1.setText("Força");
             button2.setText("Inteligência");
             button1.setVisible(true);
             button2.setVisible(true);
-        }else if(Historia.getParteDaHistoria()==4){
+        }else if(Historia.parteDaHistoria==4){
             textfield1.setVisible(false);
             button1.setText("154");
             button2.setText("152");
             button1.setVisible(true);
             button2.setVisible(true);
-        }else if(Historia.getParteDaHistoria()==5){
+        }else if(Historia.parteDaHistoria==5){
+            textfield1.setVisible(false);
+            button1.setText("");
+            button2.setText("");
+            button1.setVisible(false);
+            button2.setVisible(false);
+        }else if(Historia.parteDaHistoria==6){
+            textfield1.setVisible(false); //deve ter caixa de texto?
+            button1.setText(""); //qual o texto do primeiro botão?
+            button2.setText(""); //qual o texto do segundo botão?
+            button1.setVisible(false); //deve ter primeiro botão?
+            button2.setVisible(false); //deve ter segundo botão?
         }else{
-
+            textfield1.setVisible(false);
+            button1.setVisible(false);
+            button2.setVisible(false);
+            //NÃO MODIFICAR ESSE CASO!
+            //Ele impede o andamento da história além do programado, impedindo uma UnsupportedOperationException.
         }
     }
 
@@ -99,34 +116,34 @@ public class PainelJogo extends JPanel{
             //IMPLEMENTAÇÃO DAS AÇÕES DOS BOTÕES
             public void actionPerformed(ActionEvent event){
                 if(event.getSource()==button1){ //Caso pressionado o primeiro botão...
-                    if(Historia.getParteDaHistoria()==0){
+                    if(Historia.parteDaHistoria==0){
                         InfoChar.nome=textfield1.getText(); //obter nome do personagem
                         textfield1.setText("");
-                    }else if(Historia.getParteDaHistoria()==1){
+                    }else if(Historia.parteDaHistoria==1){
                         InfoChar.sexo="Masculino"; //homem
-                    }else if(Historia.getParteDaHistoria()==2){
+                    }else if(Historia.parteDaHistoria==2){
                         InfoChar.classe=("Masculino".equals(InfoChar.sexo) ? "Paladino" : "Paladina"); //paladin
-                    }else if(Historia.getParteDaHistoria()==3){
+                    }else if(Historia.parteDaHistoria==3){
                         InfoChar.forca+=5; //força
-                    }else if(Historia.getParteDaHistoria()==4){
+                    }else if(Historia.parteDaHistoria==4){
                         Historia.decisao=1;
-                    }else if(Historia.getParteDaHistoria()==5){
+                    }else if(Historia.parteDaHistoria==5){
                     }else{
                     } //após, exibe a próxima tela:
                     ClassesJogo.Historia.parteDaHistoria++;
                     PainelChar.atualizar();
                     PainelJogo.atualizar();
                 }else if(event.getSource()==button2){ //Caso pressionado o segundo botão...
-                    if(Historia.getParteDaHistoria()==0){ //não há segundo botão
-                    }else if(Historia.getParteDaHistoria()==1){
+                    if(Historia.parteDaHistoria==0){ //não há segundo botão
+                    }else if(Historia.parteDaHistoria==1){
                         InfoChar.sexo="Feminino"; //mulher
-                    }else if(Historia.getParteDaHistoria()==2){
+                    }else if(Historia.parteDaHistoria==2){
                         InfoChar.classe=("Masculino".equals(InfoChar.sexo) ? "Bruxo" : "Bruxa"); //witch
-                    }else if(Historia.getParteDaHistoria()==3){
+                    }else if(Historia.parteDaHistoria==3){
                         InfoChar.inteligencia+=5; //inteligencia
-                    }else if(Historia.getParteDaHistoria()==4){
+                    }else if(Historia.parteDaHistoria==4){
                         Historia.decisao=2;
-                    }else if(Historia.getParteDaHistoria()==5){
+                    }else if(Historia.parteDaHistoria==5){
                     }else{
                     } //após, exibe a próxima tela:
                     ClassesJogo.Historia.parteDaHistoria++;

@@ -10,17 +10,23 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import javax.swing.JOptionPane;
 
+/*
+ * Essa classe define funções básicas para o funcionamento do jogo, e a infraestrutura de atributos gerais.
+ */
 public class General{
 
     static ObjectOutputStream save;
     static ObjectInputStream load;
     private static boolean ingame=false;
-    
-    public static void reset(){ //Volta a tela inicial do jogo.
+
+    public static void reset(){ //Constrói a tela inicial do jogo.
+        //STATS BALANCEÁVEIS DO CHAR
         InfoChar.forca=5;
         InfoChar.inteligencia=5;
         InfoChar.hp=100;
         InfoChar.dinheiro=300;
+
+        //VALORES INICIAIS DO SISTEMA DE JOGO
         InfoChar.nome=null;
         InfoChar.sexo=null;
         InfoChar.classe=null;
@@ -35,12 +41,16 @@ public class General{
     }
 
     public static void save(){ //Salva uma instância de FileData em um arquivo.
-        try {
-            save=new ObjectOutputStream(new FileOutputStream("savegame.sav"));
-            save.writeObject(new FileData()); //Salva uma nova instância de FileData
-            JOptionPane.showMessageDialog(null, "Jogo salvo com sucesso!");
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao salvar jogo.");
+        if(ingame){
+            try {
+                save=new ObjectOutputStream(new FileOutputStream("savegame.sav"));
+                save.writeObject(new FileData()); //Salva uma nova instância de FileData
+                JOptionPane.showMessageDialog(null, "Jogo salvo com sucesso!");
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(null, "Erro ao salvar jogo.");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Não está em um jogo!");
         }
     }
 
@@ -72,11 +82,11 @@ public class General{
         }
     }
 
-    public static boolean isIngame(){
+    public static boolean isIngame(){ //método de encapsulamento de ingame
         return ingame;
     }
 
-    public static void setIngame(boolean ingame){
+    public static void setIngame(boolean ingame){ //método de encapsulamento de ingame
         General.ingame=ingame;
     }
 }

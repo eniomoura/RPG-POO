@@ -19,7 +19,7 @@ public class PainelMenu extends JPanel{ //Classe para a disposição dos botões
     //Declaração de botões - Importante retornar o objeto criado para o uso de handlers.
     JButton novoJogo=new JButton("Novo Jogo");
     JButton carregar=new JButton("Carregar");
-    JButton salvar=new JButton("Salvar");
+    static JButton salvar=new JButton("Salvar");
     JButton sair=new JButton("Sair");
 
     PainelMenu(){
@@ -30,6 +30,7 @@ public class PainelMenu extends JPanel{ //Classe para a disposição dos botões
         //DISPOSIÇÃO DOS ELEMENTOS DO PAINEL
         add(novoJogo);
         add(salvar);
+        salvar.setEnabled(false);
         add(carregar);
         createSpacerSet(10);
         add(sair);

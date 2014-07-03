@@ -23,7 +23,7 @@ public class FileData implements Serializable{
         this.nome=InfoChar.nome;
         this.classe=InfoChar.classe;
         this.sexo=InfoChar.sexo;
-        this.historia=Historia.getParteDaHistoria();
+        this.historia=Historia.parteDaHistoria;
         this.forca=InfoChar.forca;
         this.inteligencia=InfoChar.inteligencia;
         this.experiencia=InfoChar.experiencia;

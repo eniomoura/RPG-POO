@@ -55,15 +55,15 @@ public class PainelChar extends JPanel{
     }
 
     public static void atualizar(){ //Atualiza o painel
-        if(Historia.getParteDaHistoria()==0){ //Novo Jogo. Nome, sexo e classe ainda indefinidos.
+        if(Historia.parteDaHistoria==0){ //Novo Jogo. Nome, sexo e classe ainda indefinidos.
             player.setVisible(false);
             stats1.setVisible(false);
             stats2.setVisible(false);
             stats3.setVisible(false);
-        }else if(Historia.getParteDaHistoria()==1){ //Nome definido.
+        }else if(Historia.parteDaHistoria==1){ //Nome definido.
             player.setText("Nome: "+InfoChar.nome);
             player.setVisible(true);
-        }else if(Historia.getParteDaHistoria()==2){ //Sexo definido. Aparecem os stats.
+        }else if(Historia.parteDaHistoria==2){ //Sexo definido. Aparecem os stats.
             player.setText("Nome: "+InfoChar.nome);
             player.setVisible(true);
             sexo.setText("Sexo: "+InfoChar.sexo);
