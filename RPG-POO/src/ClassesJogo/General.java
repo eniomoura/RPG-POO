@@ -1,5 +1,6 @@
 package ClassesJogo;
 
+import GUIJogo.MainFrame;
 import GUIJogo.PainelChar;
 import GUIJogo.PainelJogo;
 import GUIJogo.ProgramInit;
@@ -28,9 +29,11 @@ public abstract class General{
         InfoChar.dinheiro=300;
 
         //VALORES INICIAIS DO SISTEMA DE JOGO
+        ProgramInit.batalha=new GUIJogo.PainelBatalha("initializatron");
         InfoChar.nome=null;
         InfoChar.sexo=null;
         InfoChar.classe=null;
+        Historia.decisao=0;
         PainelJogo.textfield1.setText(null);
         if(ingame){
             Historia.parteDaHistoria=0;
@@ -42,7 +45,7 @@ public abstract class General{
     }
 
     public static void save(){ //Salva uma instância de FileData em um arquivo.
-        if(ingame){
+        if(ingame&&MainFrame.principal.isVisible()){
             try {
                 save=new ObjectOutputStream(new FileOutputStream("savegame.sav"));
                 save.writeObject(new FileData()); //Salva uma nova instância de FileData
