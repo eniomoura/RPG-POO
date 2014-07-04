@@ -23,7 +23,7 @@ import javax.swing.JPanel;
 public class PainelBatalha extends JPanel{
 
     public Monstro mob;
-    public int dano, maxhp;
+    public int dano, maxhp, cdcounter;
     public Random aleatorio;
     public String textoBatalha;
     public JPanel panel1; //contém - panel1a, panel1b, panel1c
@@ -36,6 +36,7 @@ public class PainelBatalha extends JPanel{
     public JLabel caixaDeTexto;
     public JButton atacar;
     public JButton magia;
+    public JButton classe;
     public ButtonHandler handler;
 
     public PainelBatalha(String monstro){ //Construtor para monstros não procedurais.
@@ -48,6 +49,7 @@ public class PainelBatalha extends JPanel{
         mob=new Monstro(monstro);
         mob.nome=monstro;
         maxhp=mob.hp;
+        cdcounter=0;
         aleatorio=new Random();
         panel1=new JPanel(new GridLayout(0, 3));
         panel2=new JPanel(new GridLayout(0, 1));
@@ -56,9 +58,18 @@ public class PainelBatalha extends JPanel{
         panel1b=new JPanel(new GridLayout(0, 1));
         panel1c=new JPanel(new GridLayout(0, 1));
         atacar=new JButton("Atacar");
-        atacar.setToolTipText("Ataque básico, baseado na sua força e na defesa do inimigo.");
+        atacar.setToolTipText("Ataque físico básico, baseado na sua força e na defesa do inimigo.");
         magia=new JButton("Magia");
-        magia.setToolTipText("Ataque mágico, baseado na sua inteligência e num fator aleatório.");
+        magia.setToolTipText("Ataque mágico básico, baseado na sua inteligência e num fator aleatório.");
+        if(InfoChar.classe==null){
+            classe=new JButton("CLASS_NOT_FOUND");
+        }else if(InfoChar.classe.startsWith("Paladin")){
+            classe=new JButton("Julgamento");
+            classe.setToolTipText("Dá dano equivalente a 1/10 do HP do personagem. Ignora armadura.");
+        }else if(InfoChar.classe.startsWith("Brux")){
+            classe=new JButton("Recompor-se");
+            classe.setToolTipText("Cura-se o equivalente a metade do HP restante. Não cura além de 100HP");
+        }
         handler=new ButtonHandler();
 
         //LABELS ATUALIZÁVEIS
@@ -80,8 +91,10 @@ public class PainelBatalha extends JPanel{
         add(panel3);
         panel3.add(atacar);
         panel3.add(magia);
+        panel3.add(classe);
         atacar.addActionListener(handler);
         magia.addActionListener(handler);
+        classe.addActionListener(handler);
     }
 
     public void atualizar(){ //Atualiza as informações da tela e verifica se a batalha terminou
@@ -95,6 +108,13 @@ public class PainelBatalha extends JPanel{
             panel3.setVisible(false);
             panel2.setLayout(new FlowLayout());
             caixaDeTexto.setText("<html><table><u><font size=45>GAME OVER</font></u></table></html>");
+        }
+        if(cdcounter>0){
+            classe.setEnabled(false);
+            classe.setText((InfoChar.classe.startsWith("Paladin")?"Julgamento":"Recompor-se")+" ("+Integer.toString(cdcounter)+")");
+        }else{
+            classe.setEnabled(true);
+            classe.setText(InfoChar.classe.startsWith("Paladin")?"Julgamento":"Recompor-se");
         }
     }
 
@@ -114,17 +134,52 @@ public class PainelBatalha extends JPanel{
                 //Cálculo de dano mágico: f(INT)=(random(0-INT)+ln(INT))^2
                 dano=(int) Math.sqrt(Math.pow(aleatorio.nextInt(InfoChar.inteligencia)+Math.log(InfoChar.inteligencia), 2));
             }
-            mob.hp-=dano;
-            if(textoBatalha.length()<244){
-                textoBatalha=textoBatalha.concat(InfoChar.nome+" atacou por "+dano+" de dano!<br>");
+            if(event.getSource()==classe){
+                if(InfoChar.classe.startsWith("Paladin")){
+                    dano=InfoChar.hp/10;
+                    mob.hp-=dano;
+                    if(textoBatalha.length()<244){
+                        textoBatalha=textoBatalha.concat(InfoChar.nome+" usou Julgamento por "+dano+" de dano!<br>");
+                    }else{
+                        textoBatalha="...<br>"+InfoChar.nome+" usou Julgamento por "+dano+" de dano!<br>";
+                    }
+                    cdcounter+=5; //COOLDOWN DA SKILL DE CLASSE
+                    atualizar();
+                    PainelChar.atualizar();
+                }else if(InfoChar.classe.startsWith("Brux")){
+                    if((InfoChar.hp)+(InfoChar.hp/2)<100){
+                        dano=InfoChar.hp/2;
+                    }else{
+                        dano=100-InfoChar.hp;
+                    }
+                    InfoChar.hp+=dano;
+                    if(textoBatalha.length()<244){
+                        textoBatalha=textoBatalha.concat(InfoChar.nome+" usou Recompor-se por "+dano+" de cura!<br>");
+                    }else{
+                        textoBatalha="...<br>"+InfoChar.nome+" usou Recompor-se por "+dano+" de cura!<br>";
+                    }
+                    cdcounter+=5; //COOLDOWN DA SKILL DE CLASSE
+                    atualizar();
+                    PainelChar.atualizar();
+                }else{
+                    //CLASS NOT FOUND
+                }
             }else{
-                textoBatalha="...<br>"+InfoChar.nome+" atacou por "+dano+" de dano!<br>";
+                mob.hp-=dano;
+                if(textoBatalha.length()<244){
+                    textoBatalha=textoBatalha.concat(InfoChar.nome+" atacou por "+dano+" de dano!<br>");
+                }else{
+                    textoBatalha="...<br>"+InfoChar.nome+" atacou por "+dano+" de dano!<br>";
+                }
+                atualizar();
+                PainelChar.atualizar();
             }
-            atualizar();
-            PainelChar.atualizar();
             dano=mob.ataque; //Cálculo do dano dado ao jogador
             InfoChar.hp-=dano;
             textoBatalha=textoBatalha.concat(mob.nome+" atacou por "+dano+" de dano!<br>");
+            if(cdcounter>0){
+                cdcounter--;
+            }
             atualizar();
             PainelChar.atualizar();
         }
