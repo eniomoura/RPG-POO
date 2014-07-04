@@ -39,12 +39,14 @@ public class PainelJogo extends JPanel{
             button1.setVisible(false);
             button2.setVisible(false);
             PainelMenu.salvar.setEnabled(false);
-        }else if(Historia.parteDaHistoria==0){
+        }else{
+            PainelMenu.salvar.setEnabled(true);
+        }
+        if(Historia.parteDaHistoria==0){
             textfield1.setVisible(true);
             button1.setText("Continuar");
             button1.setVisible(true);
             button2.setVisible(false);
-            PainelMenu.salvar.setEnabled(true);
         }else if(Historia.parteDaHistoria==1){
             textfield1.setVisible(false);
             button1.setText("Homem");
