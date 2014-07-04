@@ -2,6 +2,7 @@ package ClassesJogo;
 
 public class Monstro{
 
+    public String nome;
     public int hp;
     public int ataque;
     public int defesa;

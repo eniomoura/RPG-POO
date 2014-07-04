@@ -43,6 +43,7 @@ public class PainelBatalha extends JPanel{
         //INICIALIZAÇÃO DE VARIÁVEIS
         textoBatalha="";
         mob=new Monstro(monstro);
+        mob.nome=monstro;
         maxhp=mob.hp;
         panel1=new JPanel(new GridLayout(0, 3));
         panel2=new JPanel(new GridLayout(0, 1));
@@ -96,19 +97,21 @@ public class PainelBatalha extends JPanel{
         public void actionPerformed(ActionEvent event){
             if(event.getSource()==atacar){
                 if(InfoChar.forca-mob.defesa>0){
-                    dano=InfoChar.forca-mob.defesa;
+                    dano=InfoChar.forca-mob.defesa; //Cálculo do dano dado ao inimigo
                 }else{
-                    dano=1;
+                    dano=1; //Dano mínimo dado ao inimigo
                 }
                 mob.hp-=dano;
-                if(textoBatalha.length()<200){
-                    textoBatalha=textoBatalha.concat("Atacou por "+dano+" de dano!<br>");
+                if(textoBatalha.length()<244){
+                    textoBatalha=textoBatalha.concat(InfoChar.nome+" atacou por "+dano+" de dano!<br>");
                 }else{
-                    textoBatalha="...<br>Atacou por "+dano+" de dano!<br>";
+                    textoBatalha="...<br>"+InfoChar.nome+" atacou por "+dano+" de dano!<br>";
                 }
                 atualizar();
                 PainelChar.atualizar();
-                InfoChar.hp=InfoChar.hp-mob.ataque;
+                dano=mob.ataque; //Cálculo do dano dado ao jogador
+                InfoChar.hp-=dano;
+                textoBatalha=textoBatalha.concat(mob.nome+" atacou por "+dano+" de dano!<br>");
                 atualizar();
                 PainelChar.atualizar();
             }else{
