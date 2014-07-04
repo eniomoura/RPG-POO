@@ -11,9 +11,9 @@ public class ProgramInit{
      * da instância da janela principal, documentadas como "mágica". Evite tentar "consertar" isso,
      * pode envolver a reescrita do programa inteiro.
      */
-    static MainFrame mainFrame=new MainFrame(); //Constrói a janela de jogo inicial
-    static PainelBatalha batalha; //magic fuel
-
+    public static MainFrame mainFrame=new MainFrame(); //Constrói a janela de jogo inicial
+    public static PainelBatalha batalha; //magic fuel
+    
     public static void main(String[] args){ //Main. Herp Derp.
         mainFrame.setVisible(true); //Exibe janela de jogo principal.
     }
@@ -21,6 +21,7 @@ public class ProgramInit{
     public static void entrarBatalha(String monster){ //white magic
         batalha=new PainelBatalha(monster); //magic motor
         principal.setVisible(false);
+        batalha.setVisible(true);
         mainFrame.add(batalha, BorderLayout.LINE_END);
     }
 

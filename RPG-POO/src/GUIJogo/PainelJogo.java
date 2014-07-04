@@ -70,10 +70,14 @@ public class PainelJogo extends JPanel{
             button1.setVisible(true);
             button2.setVisible(true);
         }else if(Historia.parteDaHistoria==5){
+            /* Aqui poderia ser colocado um IF configurando botões separados
+             * para cada decisão da história, mas como ambos os casos
+             * apenas pedem um botão de continuar, isso foi omitido.
+             */
             textfield1.setVisible(false);
-            button1.setText("");
+            button1.setText("Continuar");
             button2.setText("");
-            button1.setVisible(false);
+            button1.setVisible(true);
             button2.setVisible(false);
         }else if(Historia.parteDaHistoria==6){
             textfield1.setVisible(false); //deve ter caixa de texto?
@@ -125,9 +129,15 @@ public class PainelJogo extends JPanel{
                         InfoChar.classe=("Masculino".equals(InfoChar.sexo) ? "Paladino" : "Paladina"); //paladin
                     }else if(Historia.parteDaHistoria==3){
                         InfoChar.forca+=5; //força
-                    }else if(Historia.parteDaHistoria==4){
+                    }else if(Historia.parteDaHistoria==4){//luta
+                        ProgramInit.entrarBatalha("Bando de Variáveis Desencapsuladas");
                         Historia.decisao=1;
                     }else if(Historia.parteDaHistoria==5){
+                        if(Historia.decisao==2){
+                            Historia.parteDaHistoria=4;
+                            ProgramInit.entrarBatalha("Bando de Variáveis Desencapsuladas");
+                            Historia.decisao=1;
+                        }
                     }else{
                     } //após, exibe a próxima tela:
                     ClassesJogo.Historia.parteDaHistoria++;
@@ -141,9 +151,10 @@ public class PainelJogo extends JPanel{
                         InfoChar.classe=("Masculino".equals(InfoChar.sexo) ? "Bruxo" : "Bruxa"); //witch
                     }else if(Historia.parteDaHistoria==3){
                         InfoChar.inteligencia+=5; //inteligencia
-                    }else if(Historia.parteDaHistoria==4){
+                    }else if(Historia.parteDaHistoria==4){ //professor
+                        InfoChar.inteligencia+=2;
                         Historia.decisao=2;
-                    }else if(Historia.parteDaHistoria==5){
+                    }else if(Historia.parteDaHistoria==5){//não há segundo botão
                     }else{
                     } //após, exibe a próxima tela:
                     ClassesJogo.Historia.parteDaHistoria++;

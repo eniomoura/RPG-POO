@@ -1,7 +1,5 @@
 package ClassesJogo;
 
-import GUIJogo.ProgramInit;
-
 /*
  * Essa classe tem a finalidade de retornar a saída de texto para a GUI.
  */
@@ -25,11 +23,8 @@ public class Historia{
             return ("À sua esquerda está a sala 154 e à sua direita está a sala 152");
         }else if(parteDaHistoria==5){
             if(decisao==1){
-                ProgramInit.entrarBatalha("Bando de Variáveis Desencapsuladas");
-                return "placeholder vitoria";
+                return "<html><table>Derrotando a perigosa Variável desencapsulada, você percebe que o que ali no chão, se encontrava o Notebook do professor Sandino, e que uma das janelas, estava quebrada.<br><br>Você salta, e segue seu caminho.</table></html>";
             }else{ //decisao==2 ou batatãnnn
-                parteDaHistoria--; //repete parte da historia anterior
-                InfoChar.inteligencia+=2;
                 return ("<html><table>Você encontra um professor desesperado. Ele te pede para ir para a sala 154 e lutar com várias variáveis selvagens desencapsuladas. Ele te ensina sobre encapsulamento e você obtém +2 de inteligência.</table></html>");
             }
         }else if(parteDaHistoria==6){
@@ -37,7 +32,7 @@ public class Historia{
         }else if(parteDaHistoria==7){
             //NÃO MODIFICAR ESSE CASO!
             //Ele impede o andamento da história além do programado, impedindo uma UnsupportedOperationException.
-            return ("");
+            return ("FIM DA HISTÓRIA DESENVOLVIDA ATÉ O MOMENTO");
         }else{
             throw new UnsupportedOperationException("Um erro inesperado aconteceu.");
         }

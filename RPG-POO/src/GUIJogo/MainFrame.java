@@ -11,7 +11,7 @@ public class MainFrame extends JFrame{
 
     //CONSTRUÇAO DE ELEMENTOS DA JANELA
     PainelMenu menu=new PainelMenu();
-    static PainelJogo principal=new PainelJogo();
+    public static PainelJogo principal=new PainelJogo();
     PainelChar menuchar=new PainelChar();
 
     MainFrame(){ //construtor da janela de jogo padrão

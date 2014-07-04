@@ -21,7 +21,7 @@ import javax.swing.JPanel;
  */
 public class PainelBatalha extends JPanel{
 
-    Monstro mob;
+    public Monstro mob;
     public int maxhp;
     public JPanel panel1;
     public JPanel panel2;
@@ -35,9 +35,11 @@ public class PainelBatalha extends JPanel{
     public JButton atacar;
     public ButtonHandler handler;
 
-    PainelBatalha(String monstro){ //Construtor para monstros não procedurais.
+    public PainelBatalha(String monstro){ //Construtor para monstros não procedurais.
+        //CONFIGURAÇÕES DO PAINEL
         super(new GridLayout(0, 1));
-
+        setVisible(false);
+        
         //INICIALIZAÇÃO DE VARIÁVEIS
         mob=new Monstro(monstro);
         maxhp=mob.hp;
@@ -52,7 +54,7 @@ public class PainelBatalha extends JPanel{
 
         //LABELS ATUALIZÁVEIS
         hpMonstro=new JLabel("HP: "+Integer.toString(mob.hp)+"/"+maxhp);
-        textoBatalha=new JLabel(placeholder);
+        textoBatalha=new JLabel(placeholder); //deve ser implementado
 
         //CONSTRUÇÃO DO PAINEL
         add(panel1);

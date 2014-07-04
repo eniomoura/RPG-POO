@@ -2,6 +2,7 @@ package ClassesJogo;
 
 import GUIJogo.PainelChar;
 import GUIJogo.PainelJogo;
+import GUIJogo.ProgramInit;
 import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -11,9 +12,9 @@ import java.io.ObjectOutputStream;
 import javax.swing.JOptionPane;
 
 /*
- * Essa classe define funções básicas para o funcionamento do jogo, e a infraestrutura de atributos gerais.
+ * Essa interface define funções básicas para o funcionamento do jogo, e a infraestrutura de atributos gerais.
  */
-public class General{
+public abstract class General{
 
     static ObjectOutputStream save;
     static ObjectInputStream load;
@@ -49,8 +50,10 @@ public class General{
             } catch (IOException e) {
                 JOptionPane.showMessageDialog(null, "Erro ao salvar jogo.");
             }
-        }else{
+        }else if(!ingame){
             JOptionPane.showMessageDialog(null, "Não está em um jogo!");
+        }else{
+            JOptionPane.showMessageDialog(null, "Não pode salvar o jogo durante batalha!");
         }
     }
 
@@ -68,7 +71,9 @@ public class General{
                 InfoChar.dinheiro=loadedData.getDinheiro();
                 InfoChar.hp=loadedData.getHp();
                 Historia.parteDaHistoria=loadedData.getHistoria();
+                Historia.decisao=loadedData.getDecisao();
                 //Atualiza a tela com os novos dados
+                ProgramInit.sairBatalha();
                 PainelJogo.atualizar();
                 PainelChar.atualizar();
                 ingame=true;
@@ -80,7 +85,7 @@ public class General{
         } catch (IOException|ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "Erro ao carregar jogo.");
         }
-    }
+            }
 
     public static boolean isIngame(){ //método de encapsulamento de ingame
         return ingame;
