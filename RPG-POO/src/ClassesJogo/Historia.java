@@ -28,7 +28,7 @@ public class Historia{
                 return ("<html><table>Você encontra um professor desesperado. Ele te pede para ir para a sala 154 e lutar com várias variáveis selvagens desencapsuladas. Ele te ensina sobre encapsulamento e você obtém +2 de inteligência.</table></html>");
             }
         }else if(parteDaHistoria==6){
-            return ("");
+            return ("<html><table>Partindo dali, já não há mais pistas do paradeiro do professor. Onde procurar?</table></html>");
         }else if(parteDaHistoria==7){
             //NÃO MODIFICAR ESSE CASO!
             //Ele impede o andamento da história além do programado, impedindo uma UnsupportedOperationException.

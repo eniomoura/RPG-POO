@@ -81,10 +81,10 @@ public class PainelJogo extends JPanel{
             button2.setVisible(false);
         }else if(Historia.parteDaHistoria==6){
             textfield1.setVisible(false); //deve ter caixa de texto?
-            button1.setText(""); //qual o texto do primeiro botão?
-            button2.setText(""); //qual o texto do segundo botão?
-            button1.setVisible(false); //deve ter primeiro botão?
-            button2.setVisible(false); //deve ter segundo botão?
+            button1.setText("CAB"); //qual o texto do primeiro botão?
+            button2.setText("Reuni"); //qual o texto do segundo botão?
+            button1.setVisible(true); //deve ter primeiro botão?
+            button2.setVisible(true); //deve ter segundo botão?
         }else{
             textfield1.setVisible(false);
             button1.setVisible(false);
@@ -138,6 +138,7 @@ public class PainelJogo extends JPanel{
                             ProgramInit.entrarBatalha("Bando de Variáveis Desencapsuladas");
                             Historia.decisao=1;
                         }
+                    }else if(Historia.parteDaHistoria==6){
                     }else{
                     } //após, exibe a próxima tela:
                     ClassesJogo.Historia.parteDaHistoria++;
@@ -155,6 +156,7 @@ public class PainelJogo extends JPanel{
                         InfoChar.inteligencia+=2;
                         Historia.decisao=2;
                     }else if(Historia.parteDaHistoria==5){//não há segundo botão
+                    }else if(Historia.parteDaHistoria==6){
                     }else{
                     } //após, exibe a próxima tela:
                     ClassesJogo.Historia.parteDaHistoria++;
