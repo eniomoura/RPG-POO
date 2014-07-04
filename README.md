@@ -16,8 +16,8 @@ Criar um protótipo de GUI e jogar tudo fora             :: OK
 
 Criar um sistema de batalha e evolução de personagem    :: Parcialmente Completo
 
-Criar uma história apresentável                         :: Iniciado
+Criar uma história apresentável                         :: Parcialmente Completo
 
-Remover placeholders restantes e finalizar o código     ::
+Remover placeholders restantes e finalizar o código     :: Iniciado
 
 Apresentação do trabalho                                ::
