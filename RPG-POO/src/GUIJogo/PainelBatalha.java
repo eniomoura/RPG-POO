@@ -22,7 +22,8 @@ import javax.swing.JPanel;
 public class PainelBatalha extends JPanel{
 
     public Monstro mob;
-    public int maxhp;
+    public int dano, maxhp;
+    public String textoBatalha;
     public JPanel panel1;
     public JPanel panel2;
     public JPanel panel3;
@@ -30,8 +31,7 @@ public class PainelBatalha extends JPanel{
     public JPanel panel1b;
     public JPanel panel1c;
     public JLabel hpMonstro;
-    public JLabel textoBatalha;
-    public String placeholder="placeholder";
+    public JLabel caixaDeTexto;
     public JButton atacar;
     public ButtonHandler handler;
 
@@ -41,6 +41,7 @@ public class PainelBatalha extends JPanel{
         setVisible(false);
         
         //INICIALIZAÇÃO DE VARIÁVEIS
+        textoBatalha="";
         mob=new Monstro(monstro);
         maxhp=mob.hp;
         panel1=new JPanel(new GridLayout(0, 3));
@@ -54,7 +55,7 @@ public class PainelBatalha extends JPanel{
 
         //LABELS ATUALIZÁVEIS
         hpMonstro=new JLabel("HP: "+Integer.toString(mob.hp)+"/"+maxhp);
-        textoBatalha=new JLabel(placeholder); //deve ser implementado
+        caixaDeTexto=new JLabel(textoBatalha); //deve ser implementado
 
         //CONSTRUÇÃO DO PAINEL
         add(panel1);
@@ -67,13 +68,14 @@ public class PainelBatalha extends JPanel{
         panel1b.add(new JLabel("DEF: "+Integer.toString(mob.defesa)));
         panel1c.add(new JLabel("<html>image<br>placeholder<html>"));
         add(panel2);
-        panel2.add(textoBatalha);
+        panel2.add(caixaDeTexto);
         add(panel3);
         panel3.add(atacar);
         atacar.addActionListener(handler);
     }
 
     public void atualizar(){ //Atualiza as informações da tela e verifica se a batalha terminou
+        caixaDeTexto.setText("<html>"+textoBatalha+"</html>");
         hpMonstro.setText("HP: "+Integer.toString(mob.hp)+"/"+maxhp);
         if(mob.hp<=0){ //VITÓRIA
             ProgramInit.sairBatalha();
@@ -82,7 +84,7 @@ public class PainelBatalha extends JPanel{
             panel1.setVisible(false);
             panel3.setVisible(false);
             panel2.setLayout(new FlowLayout());
-            textoBatalha.setText("<html><table><u><font size=45>GAME OVER</font></u></table></html>");
+            caixaDeTexto.setText("<html><table><u><font size=45>GAME OVER</font></u></table></html>");
         }
     }
 
@@ -94,9 +96,15 @@ public class PainelBatalha extends JPanel{
         public void actionPerformed(ActionEvent event){
             if(event.getSource()==atacar){
                 if(InfoChar.forca-mob.defesa>0){
-                    mob.hp-=InfoChar.forca-mob.defesa;
+                    dano=InfoChar.forca-mob.defesa;
                 }else{
-                    mob.hp-=1;
+                    dano=1;
+                }
+                mob.hp-=dano;
+                if(textoBatalha.length()<200){
+                    textoBatalha=textoBatalha.concat("Atacou por "+dano+" de dano!<br>");
+                }else{
+                    textoBatalha="...<br>Atacou por "+dano+" de dano!<br>";
                 }
                 atualizar();
                 PainelChar.atualizar();
