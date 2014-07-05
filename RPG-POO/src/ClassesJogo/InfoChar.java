@@ -5,13 +5,13 @@ package ClassesJogo;
  * durante o jogo.
  */
 public class InfoChar{
-
-    public static String nome;
-    public static String classe;
-    public static String sexo;
-    public static int forca;
-    public static int inteligencia;
-    public static int experiencia;
-    public static int dinheiro;
-    public static int hp;
+    public static String nome, classe, sexo;
+    public static int forca, inteligencia, experiencia, dinheiro, hp, level, nextLevel;
+    
+    public static void levelUp(){
+        level++;
+        nextLevel=(int) (50*(Math.sqrt(nextLevel)));
+        forca+=(int) Math.sqrt(level);
+        inteligencia+=(int) Math.sqrt(level);
+    }
 }

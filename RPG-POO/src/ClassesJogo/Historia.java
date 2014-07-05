@@ -14,6 +14,7 @@ public class Historia{
        /*
         * Texto indica posição atual na história, com as rotas possíveis (dos botões), em parênteses.
         */
+        
         if(parteDaHistoria==-1){
             return "Bem vindo ao JOGO."; //você perdeu o jogo. malz ae.
         }else if(parteDaHistoria==0){ //História 1 (Criação de classe -> 2)

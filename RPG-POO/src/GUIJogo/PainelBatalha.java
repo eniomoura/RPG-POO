@@ -101,7 +101,14 @@ public class PainelBatalha extends JPanel{
         caixaDeTexto.setText("<html>"+textoBatalha+"</html>");
         hpMonstro.setText("HP: "+Integer.toString(mob.hp)+"/"+maxhp);
         if(mob.hp<=0){ //VITÓRIA
+            InfoChar.experiencia+=mob.xpReward;
+            InfoChar.dinheiro+=mob.gpReward;
+            if(InfoChar.experiencia>InfoChar.nextLevel){
+                InfoChar.levelUp();
+                PainelChar.fanfare.setVisible(true);
+            }
             ProgramInit.sairBatalha();
+            return;
         }else if(InfoChar.hp<=0){ //GAME OVER
             General.setIngame(false);
             panel1.setVisible(false);
@@ -111,16 +118,16 @@ public class PainelBatalha extends JPanel{
         }
         if(cdcounter>0){
             classe.setEnabled(false);
-            classe.setText((InfoChar.classe.startsWith("Paladin")?"Julgamento":"Recompor-se")+" ("+Integer.toString(cdcounter)+")");
+            classe.setText((InfoChar.classe.startsWith("Paladin") ? "Julgamento" : "Recompor-se")+" ("+Integer.toString(cdcounter)+")");
         }else{
             classe.setEnabled(true);
-            classe.setText(InfoChar.classe.startsWith("Paladin")?"Julgamento":"Recompor-se");
+            classe.setText(InfoChar.classe.startsWith("Paladin") ? "Julgamento" : "Recompor-se");
         }
     }
-
     /*
      * Essa classe define a ação de cada botão do painel de batalha
      */
+
     private class ButtonHandler implements ActionListener{
 
         public void actionPerformed(ActionEvent event){
@@ -146,6 +153,9 @@ public class PainelBatalha extends JPanel{
                     cdcounter+=5; //COOLDOWN DA SKILL DE CLASSE
                     atualizar();
                     PainelChar.atualizar();
+                    if(MainFrame.principal.isVisible()){
+                        return;
+                    }
                 }else if(InfoChar.classe.startsWith("Brux")){
                     if((InfoChar.hp)+(InfoChar.hp/2)<100){
                         dano=InfoChar.hp/2;
@@ -161,6 +171,9 @@ public class PainelBatalha extends JPanel{
                     cdcounter+=5; //COOLDOWN DA SKILL DE CLASSE
                     atualizar();
                     PainelChar.atualizar();
+                    if(MainFrame.principal.isVisible()){
+                        return;
+                    }
                 }else{
                     //CLASS NOT FOUND
                 }
@@ -173,6 +186,9 @@ public class PainelBatalha extends JPanel{
                 }
                 atualizar();
                 PainelChar.atualizar();
+                if(MainFrame.principal.isVisible()){
+                    return;
+                }
             }
             dano=mob.ataque; //Cálculo do dano dado ao jogador
             InfoChar.hp-=dano;

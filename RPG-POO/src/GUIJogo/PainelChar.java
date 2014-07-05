@@ -15,13 +15,14 @@ import java.awt.GridLayout;
  */
 public class PainelChar extends JPanel{
     //ATRIBUIÇÕES INICIAIS DO PAINEL
-    public static JLabel player=new JLabel("Nome: "+InfoChar.nome+("Masculino".equals(InfoChar.sexo) ? ", o " : ", a ")+InfoChar.classe);
+    public static JLabel player=new JLabel("Nome: "+InfoChar.nome+("Masculino".equals(InfoChar.sexo) ? ", o " : ", a ")+InfoChar.classe+" nível "+InfoChar.level);
     public static JLabel sexo=new JLabel(InfoChar.sexo);
     public static JLabel forca=new JLabel("Força: "+Integer.toString(InfoChar.forca));
     public static JLabel inteligencia=new JLabel("Inteligência: "+Integer.toString(InfoChar.inteligencia));
-    public static JLabel experiencia=new JLabel("EXP: "+Integer.toString(InfoChar.experiencia));
+    public static JLabel experiencia=new JLabel("EXP: "+Integer.toString(InfoChar.experiencia)+"/"+InfoChar.nextLevel);
     public static JLabel dinheiro=new JLabel("Moedas: "+Integer.toString(InfoChar.dinheiro));
     public static JLabel hp= new JLabel("HP: "+Integer.toString(InfoChar.hp));
+    public static JLabel fanfare = new JLabel("LEVEL UP!");
     public static JPanel stats1 = new JPanel(new GridLayout(0,2));
     public static JPanel stats2 = new JPanel(new GridLayout(0,2));
     public static JPanel stats3 = new JPanel(new GridLayout(0,2));
@@ -42,11 +43,13 @@ public class PainelChar extends JPanel{
         stats1.add(inteligencia);
         stats1.add(new JLabel(""));
         stats2.setVisible(false);
-        stats2.add(experiencia);
-        stats1.add(new JLabel(""));
-        stats2.add(dinheiro);
+        stats1.add(new JLabel("Defesa: NaN")); //Placeholder
         stats2.add(hp);
-        stats3.add(new JLabel(""));
+        stats2.add(new JLabel("MP: NaN")); //Placeholder
+        stats2.add(experiencia);
+        stats2.add(dinheiro);
+        stats3.add(fanfare);
+        fanfare.setVisible(false);
         player.setVisible(false);
         add(player, BorderLayout.PAGE_START);
         add(stats1, BorderLayout.LINE_START);
@@ -71,13 +74,13 @@ public class PainelChar extends JPanel{
             inteligencia.setText("Inteligência: "+Integer.toString(InfoChar.inteligencia));
             stats1.setVisible(true);
         }else{ //Ficha de personagem já construída. Todos os dados dispostsos.
-            player.setText("Nome: "+InfoChar.nome+("Masculino".equals(InfoChar.sexo) ? ", o " : ", a ")+InfoChar.classe);
+            player.setText("Nome: "+InfoChar.nome+("Masculino".equals(InfoChar.sexo) ? ", o " : ", a ")+InfoChar.classe+" nível "+InfoChar.level);
             player.setVisible(true);
             sexo.setText("Sexo: "+InfoChar.sexo);
             forca.setText("Força: "+Integer.toString(InfoChar.forca));
             inteligencia.setText("Inteligência: "+Integer.toString(InfoChar.inteligencia));
             stats1.setVisible(true);
-            experiencia.setText("EXP: "+Integer.toString(InfoChar.experiencia));
+            experiencia.setText("EXP: "+Integer.toString(InfoChar.experiencia)+"/"+InfoChar.nextLevel);
             dinheiro.setText("Moedas: "+Integer.toString(InfoChar.dinheiro));
             hp.setText("HP: "+(Integer.toString(InfoChar.hp)));
             stats2.setVisible(true);

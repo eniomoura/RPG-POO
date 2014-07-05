@@ -25,11 +25,13 @@ public abstract class General{
         //STATS BALANCEÁVEIS DO CHAR
         InfoChar.forca=5;
         InfoChar.inteligencia=5;
+        InfoChar.nextLevel=280;
         InfoChar.hp=100;
         InfoChar.dinheiro=300;
 
         //VALORES INICIAIS DO SISTEMA DE JOGO
         ProgramInit.batalha=new GUIJogo.PainelBatalha("initializatron");
+        InfoChar.level=1;
         InfoChar.nome=null;
         InfoChar.sexo=null;
         InfoChar.classe=null;

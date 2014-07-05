@@ -161,8 +161,7 @@ public class PainelJogo extends JPanel{
             button2.setText("");
             button1.setVisible(true);
             button2.setVisible(false);
-        }
-        else{
+        }else{
             textfield1.setVisible(false);
             button1.setVisible(false);
             button2.setVisible(false);
@@ -250,11 +249,8 @@ public class PainelJogo extends JPanel{
                     }else if(Historia.parteDaHistoria==19){
                         ClassesJogo.Historia.parteDaHistoria=20;
                         ProgramInit.entrarBatalha("Richard Stallman");
+                    }else{
                     }
-                    else{
-                    } //após, exibe a próxima tela:
-                    PainelChar.atualizar();
-                    PainelJogo.atualizar();
                 }else if(event.getSource()==button2){ //Caso pressionado o segundo botão...
                     if(Historia.parteDaHistoria==0){ //não há segundo botão
                         ClassesJogo.Historia.parteDaHistoria=1;
@@ -266,7 +262,7 @@ public class PainelJogo extends JPanel{
                         ClassesJogo.Historia.parteDaHistoria=3;
                     }else if(Historia.parteDaHistoria==3){
                         InfoChar.inteligencia+=5; //inteligencia
-                        ClassesJogo.Historia.parteDaHistoria=4;              
+                        ClassesJogo.Historia.parteDaHistoria=4;
                     }else if(Historia.parteDaHistoria==4){
                         ClassesJogo.Historia.parteDaHistoria=6;
                     }else if(Historia.parteDaHistoria==5){//não há segundo botão
@@ -289,10 +285,14 @@ public class PainelJogo extends JPanel{
                     }else if(Historia.parteDaHistoria==18){//não há segundo botão
                     }else if(Historia.parteDaHistoria==19){//não há segundo botão
                     }else{
-                    } //após, exibe a próxima tela:
-                    PainelChar.atualizar();
-                    PainelJogo.atualizar();
+                    }
                 }
+                //após, exibe a próxima tela:
+                if(PainelChar.fanfare.isVisible()){
+                    PainelChar.fanfare.setVisible(false);
+                }
+                PainelChar.atualizar();
+                PainelJogo.atualizar();
             }
         }
     }
