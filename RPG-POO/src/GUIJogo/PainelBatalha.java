@@ -9,6 +9,8 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -24,6 +26,7 @@ public class PainelBatalha extends JPanel{
 
     public Monstro mob;
     public int dano, maxhp, cdcounter;
+    public Icon portrait;
     public Random aleatorio;
     public String textoBatalha;
     public JPanel panel1; //contém - panel1a, panel1b, panel1c
@@ -49,6 +52,7 @@ public class PainelBatalha extends JPanel{
         mob=new Monstro(monstro);
         mob.nome=monstro;
         maxhp=mob.hp;
+        portrait = new ImageIcon(getClass().getResource(mob.icone));
         cdcounter=0;
         aleatorio=new Random();
         panel1=new JPanel(new GridLayout(0, 3));
@@ -85,7 +89,7 @@ public class PainelBatalha extends JPanel{
         panel1a.add(hpMonstro);
         panel1b.add(new JLabel("ATK: "+Integer.toString(mob.ataque)));
         panel1b.add(new JLabel("DEF: "+Integer.toString(mob.defesa)));
-        panel1c.add(new JLabel("<html>image<br>placeholder<html>"));
+        panel1c.add(new JLabel(portrait));
         add(panel2);
         panel2.add(caixaDeTexto);
         add(panel3);

@@ -8,6 +8,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -18,11 +19,13 @@ import javax.swing.JTextField;
 public class PainelJogo extends JPanel{
 
     //Declaração de variáveis.
+    public static final String[] itens = {"1- Suco de Laranja (100 Moedas - Restaura todo o HP)", "2- Coca 600ml (500 Moedas - +3 Força)", "3- Capuccino (500 Moedas - +3 Inteligência)", "4- Prato Feito (1000 Moedas - HP Máximo +60)", "5- Pizza de Queijo (1000 Moedas - MP Máximo +60)"};
     public static JLabel display;
     public static JPanel caixausuario;
     public static JButton button1=new JButton("BUTTON1");
     public static JButton button2=new JButton("BUTTON2");
     public static JTextField textfield1=new JTextField(20);
+    public static JComboBox loja = new JComboBox(itens);
 
     PainelJogo(){  //Construtor da interface de jogo padrão
         super(new GridLayout(0, 1));
@@ -168,18 +171,22 @@ public class PainelJogo extends JPanel{
             button2.setText("");
             button1.setVisible(true);
             button2.setVisible(false);
-        }else if(Historia.parteDaHistoria==21){
-            textfield1.setVisible(true);
-            button1.setVisible(true);
-            button2.setVisible(true);
-            button1.setText("Comprar");
-            button2.setText("Continuar");
         }else{
             textfield1.setVisible(false);
             button1.setVisible(false);
             button2.setVisible(false);
             //NÃO MODIFICAR ESSE CASO!
             //Ele impede o andamento da história além do programado, impedindo uma UnsupportedOperationException.
+        }
+        if(Historia.parteDaHistoria==21){
+            textfield1.setVisible(false);
+            loja.setVisible(true);
+            button1.setVisible(true);
+            button2.setVisible(true);
+            button1.setText("Comprar");
+            button2.setText("Continuar");
+        }else{
+            loja.setVisible(false);
         }
     }
 
@@ -191,6 +198,8 @@ public class PainelJogo extends JPanel{
 
         public UserInput(){
             //CONSTRUÇÃO DO PAINEL DE ENTRADA DO USUÁRIO
+            add(loja);
+            loja.setVisible(false);
             add(textfield1);
             textfield1.setVisible(false);
             add(button1);
@@ -264,8 +273,8 @@ public class PainelJogo extends JPanel{
                         Historia.parteDaHistoria=20;
                         ProgramInit.entrarBatalha("Richard Stallman");
                     }else if(Historia.parteDaHistoria==21){ //LOJA
-                        switch(textfield1.getText()){
-                            case "1":
+                        switch(loja.getSelectedIndex()){
+                            case 0:
                                 if(InfoChar.dinheiro>=100){
                                     InfoChar.dinheiro-=100;
                                     InfoChar.hp=InfoChar.maxHp;
@@ -275,7 +284,7 @@ public class PainelJogo extends JPanel{
                                     JOptionPane.showMessageDialog(null, "Não tem dinheiro o suficiente!");
                                 }
                                 break;
-                            case "2":
+                            case 1:
                                 if(InfoChar.dinheiro>=500){
                                     InfoChar.forca+=3;
                                     InfoChar.dinheiro-=500;
@@ -285,7 +294,7 @@ public class PainelJogo extends JPanel{
                                     JOptionPane.showMessageDialog(null, "Não tem dinheiro o suficiente!");
                                 }
                                 break;
-                            case "3":
+                            case 2:
                                 if(InfoChar.dinheiro>=500){
                                     InfoChar.inteligencia+=3;
                                     InfoChar.dinheiro-=500;
@@ -295,7 +304,7 @@ public class PainelJogo extends JPanel{
                                     JOptionPane.showMessageDialog(null, "Não tem dinheiro o suficiente!");
                                 }
                                 break;
-                            case "4":
+                            case 3:
                                 if(InfoChar.dinheiro>=1000){
                                     InfoChar.maxHp+=60;
                                     InfoChar.dinheiro-=1000;
@@ -305,7 +314,7 @@ public class PainelJogo extends JPanel{
                                     JOptionPane.showMessageDialog(null, "Não tem dinheiro o suficiente!");
                                 }
                                 break;
-                            case "5":
+                            case 4:
                                 if(InfoChar.dinheiro>=1000){
                                     InfoChar.mp=InfoChar.maxMp+=60;
                                     InfoChar.dinheiro-=1000;
