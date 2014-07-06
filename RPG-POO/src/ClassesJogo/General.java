@@ -27,11 +27,15 @@ public abstract class General{
         InfoChar.inteligencia=5;
         InfoChar.nextLevel=280;
         InfoChar.hp=100;
+        InfoChar.mp=100;
+        InfoChar.defesa=2;
         InfoChar.dinheiro=300;
 
         //VALORES INICIAIS DO SISTEMA DE JOGO
         ProgramInit.batalha=new GUIJogo.PainelBatalha("initializatron");
         InfoChar.level=1;
+        InfoChar.maxHp=100;
+        InfoChar.maxMp=100;
         InfoChar.nome=null;
         InfoChar.sexo=null;
         InfoChar.classe=null;

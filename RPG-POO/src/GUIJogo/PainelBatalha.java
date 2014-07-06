@@ -60,7 +60,7 @@ public class PainelBatalha extends JPanel{
         atacar=new JButton("Atacar");
         atacar.setToolTipText("Ataque físico básico, baseado na sua força e na defesa do inimigo.");
         magia=new JButton("Magia");
-        magia.setToolTipText("Ataque mágico básico, baseado na sua inteligência e num fator aleatório.");
+        magia.setToolTipText("Ataque mágico básico, baseado na sua inteligência e num fator aleatório. Para cada ponto de dano dado, perde-se meio ponto de mp, arredondado pra cima.");
         if(InfoChar.classe==null){
             classe=new JButton("CLASS_NOT_FOUND");
         }else if(InfoChar.classe.startsWith("Paladin")){
@@ -68,7 +68,7 @@ public class PainelBatalha extends JPanel{
             classe.setToolTipText("Dá dano equivalente a 1/10 do HP do personagem. Ignora armadura.");
         }else if(InfoChar.classe.startsWith("Brux")){
             classe=new JButton("Recompor-se");
-            classe.setToolTipText("Cura-se o equivalente a metade do HP restante. Não cura além de 100HP");
+            classe.setToolTipText("Cura-se o equivalente a metade do HP restante. Usa 50% da mana.");
         }
         handler=new ButtonHandler();
 
@@ -107,6 +107,7 @@ public class PainelBatalha extends JPanel{
                 InfoChar.levelUp();
                 PainelChar.fanfare.setVisible(true);
             }
+            InfoChar.mp=InfoChar.maxMp; //mana regen
             ProgramInit.sairBatalha();
             return;
         }else if(InfoChar.hp<=0){ //GAME OVER
@@ -140,6 +141,7 @@ public class PainelBatalha extends JPanel{
             }else if(event.getSource()==magia){
                 //Cálculo de dano mágico: f(INT)=(random(0-INT)+ln(INT))^2
                 dano=(int) Math.sqrt(Math.pow(aleatorio.nextInt(InfoChar.inteligencia)+Math.log(InfoChar.inteligencia), 2));
+                InfoChar.mp-=dano-Math.round(dano/2); //Por alguma razão, Math.ceil não estava funcionando. Usei essa gambiarra.
             }
             if(event.getSource()==classe){
                 if(InfoChar.classe.startsWith("Paladin")){
@@ -157,10 +159,11 @@ public class PainelBatalha extends JPanel{
                         return;
                     }
                 }else if(InfoChar.classe.startsWith("Brux")){
-                    if((InfoChar.hp)+(InfoChar.hp/2)<100){
+                    InfoChar.mp-=(InfoChar.mp)/2;
+                    if((InfoChar.hp)+(InfoChar.hp/2)<InfoChar.maxHp){
                         dano=InfoChar.hp/2;
                     }else{
-                        dano=100-InfoChar.hp;
+                        dano=InfoChar.maxHp-InfoChar.hp;
                     }
                     InfoChar.hp+=dano;
                     if(textoBatalha.length()<244){
@@ -190,7 +193,11 @@ public class PainelBatalha extends JPanel{
                     return;
                 }
             }
-            dano=mob.ataque; //Cálculo do dano dado ao jogador
+            if(mob.ataque-InfoChar.defesa>0){
+                dano=mob.ataque-InfoChar.defesa; //Cálculo do dano dado ao jogador
+            }else{
+                dano=1; //Dano mínimo dado ao jogador
+            }
             InfoChar.hp-=dano;
             textoBatalha=textoBatalha.concat(mob.nome+" atacou por "+dano+" de dano!<br>");
             if(cdcounter>0){

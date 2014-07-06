@@ -42,6 +42,10 @@ public class PainelJogo extends JPanel{
         }else{
             PainelMenu.salvar.setEnabled(true);
         }
+        if(button1.getToolTipText()!=null||button2.getToolTipText()!=null){
+            button1.setToolTipText(null);
+            button2.setToolTipText(null);
+        }
         if(Historia.parteDaHistoria==0){
             textfield1.setVisible(true);
             button1.setText("Continuar");
@@ -56,7 +60,9 @@ public class PainelJogo extends JPanel{
         }else if(Historia.parteDaHistoria==2){
             textfield1.setVisible(false);
             button1.setText("Paladino");
+            button1.setToolTipText("O Paladino é capaz de desferir um ataque de grande força baseado em sua energia vital. Ele recebe um bônus inicial em defesa.");
             button2.setText("Bruxo");
+            button2.setToolTipText("O Bruxo é capaz de se recompor magicamente depois de sofrer danos. Ele recebe um bônus inicial em MP.");
             button1.setVisible(true);
             button2.setVisible(true);
         }else if(Historia.parteDaHistoria==3){
@@ -204,6 +210,7 @@ public class PainelJogo extends JPanel{
                         InfoChar.sexo="Masculino"; //homem
                         ClassesJogo.Historia.parteDaHistoria=2;
                     }else if(Historia.parteDaHistoria==2){
+                        InfoChar.defesa+=2;
                         InfoChar.classe=("Masculino".equals(InfoChar.sexo) ? "Paladino" : "Paladina"); //paladin
                         ClassesJogo.Historia.parteDaHistoria=3;
                     }else if(Historia.parteDaHistoria==3){
@@ -258,6 +265,7 @@ public class PainelJogo extends JPanel{
                         InfoChar.sexo="Feminino"; //mulher
                         ClassesJogo.Historia.parteDaHistoria=2;
                     }else if(Historia.parteDaHistoria==2){
+                        InfoChar.maxMp=InfoChar.mp+=20;
                         InfoChar.classe=("Masculino".equals(InfoChar.sexo) ? "Bruxo" : "Bruxa"); //witch
                         ClassesJogo.Historia.parteDaHistoria=3;
                     }else if(Historia.parteDaHistoria==3){
