@@ -58,7 +58,7 @@ public class Historia{
         }else if(parteDaHistoria==20){
             return ("<html><table>Após um árduo combate contra Stallman, você sai vitorios" + ("Masculino".equals(InfoChar.sexo) ? "o" : "a") + ", livrando o professor Sandino das garras do temível adversário, e podendo assim, apresentar seu trabalho de Programação Orientada a Objetos, que garantiu sua aprovação na disciplina.<br><br>E com isso, todos viveram felizes par... até o semestre seguinte.<br><br>FIM.</table></html>");
         }else if(parteDaHistoria==21){ //Loja
-            return("<html><table>==LOJA==<br>Estão vendendo:<br>1- Suco de Laranja (100 Moedas - Restaura todo o HP)<br>2- Coca 600ml (500 Moedas - +3 Força)<br>3- Capuccino (500 Moedas - +3 Inteligência)<br>4- Prato Feito (1000 Moedas - HP Máximo +60)<br>5- Pizza de Queijo (1000 Moedas - MP Máximo +60)</table><br></html>");
+            return("<html><table align=center><font size=5>==REUNI==</font><br><br>Comprar:</table></html>");
         }else{
             throw new UnsupportedOperationException("Um erro inesperado aconteceu.");
         }

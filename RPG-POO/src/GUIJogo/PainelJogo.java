@@ -19,7 +19,7 @@ import javax.swing.JTextField;
 public class PainelJogo extends JPanel{
 
     //Declaração de variáveis.
-    public static final String[] itens = {"1- Suco de Laranja (100 Moedas - Restaura todo o HP)", "2- Coca 600ml (500 Moedas - +3 Força)", "3- Capuccino (500 Moedas - +3 Inteligência)", "4- Prato Feito (1000 Moedas - HP Máximo +60)", "5- Pizza de Queijo (1000 Moedas - MP Máximo +60)"};
+    public static final String[] itens = {"Suco de Laranja (100 Moedas: Restaura todo o HP)", "Coca 600ml (500 Moedas: +3 Força)", "Capuccino (500 Moedas: +3 Inteligência)", "Prato Feito (1000 Moedas: HP Máximo +60)", "Pizza de Queijo (1000 Moedas: MP Máximo +60)"};
     public static JLabel display;
     public static JPanel caixausuario;
     public static JButton button1=new JButton("BUTTON1");
