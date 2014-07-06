@@ -11,8 +11,8 @@ public class FileData implements Serializable{
     //Para acessar, atribua-os aos atributos estáticos correspondentes em outras classes.
     private String nome, classe, sexo; //Strings do personagem
     private int historia, decisao; //Inteiros da história
-    private int forca, inteligencia, experiencia; //Estatísticas do personagem
-    private int hp, dinheiro; //Estado atual do personagem
+    private int forca, inteligencia, experiencia, maxHp, maxMp, defesa, nextLevel; //Estatísticas do personagem
+    private int hp, mp, dinheiro, level; //Estado atual do personagem
 
     public FileData(){ //Construtor de FileData inicializa uma instância com atributos de outras classes
         this.nome=InfoChar.nome;
@@ -24,6 +24,11 @@ public class FileData implements Serializable{
         this.experiencia=InfoChar.experiencia;
         this.dinheiro=InfoChar.dinheiro;
         this.hp=InfoChar.hp;
+        this.maxHp=InfoChar.maxHp;
+        this.maxMp=InfoChar.maxMp;
+        this.defesa=InfoChar.defesa;
+        this.nextLevel=InfoChar.nextLevel;
+        this.mp=InfoChar.mp;
     }
 
     public String getClasse(){
@@ -64,5 +69,29 @@ public class FileData implements Serializable{
 
     public int getDecisao(){
         return decisao;
+    }
+
+    public int getDefesa(){
+        return defesa;
+    }
+
+    public int getLevel(){
+        return level;
+    }
+
+    public int getMaxHp(){
+        return maxHp;
+    }
+
+    public int getMaxMp(){
+        return maxMp;
+    }
+
+    public int getMp(){
+        return mp;
+    }
+
+    public int getNextLevel(){
+        return nextLevel;
     }
 }

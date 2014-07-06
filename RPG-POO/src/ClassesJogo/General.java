@@ -1,6 +1,5 @@
 package ClassesJogo;
 
-import GUIJogo.MainFrame;
 import GUIJogo.PainelChar;
 import GUIJogo.PainelJogo;
 import GUIJogo.ProgramInit;
@@ -25,6 +24,7 @@ public abstract class General{
         //STATS BALANCEÁVEIS DO CHAR
         InfoChar.forca=5;
         InfoChar.inteligencia=5;
+        InfoChar.experiencia=0;
         InfoChar.nextLevel=280;
         InfoChar.hp=100;
         InfoChar.mp=100;
@@ -32,7 +32,6 @@ public abstract class General{
         InfoChar.dinheiro=300;
 
         //VALORES INICIAIS DO SISTEMA DE JOGO
-        ProgramInit.batalha=new GUIJogo.PainelBatalha("initializatron");
         InfoChar.level=1;
         InfoChar.maxHp=100;
         InfoChar.maxMp=100;
@@ -41,16 +40,18 @@ public abstract class General{
         InfoChar.classe=null;
         PainelJogo.textfield1.setText(null);
         if(ingame){
+            ProgramInit.sairBatalha();
             Historia.parteDaHistoria=0;
             PainelJogo.atualizar();
             PainelChar.atualizar();
         }else{
+            ProgramInit.batalha=new GUIJogo.PainelBatalha("initializatron");
             Historia.parteDaHistoria=-1;
         }
     }
 
     public static void save(){ //Salva uma instância de FileData em um arquivo.
-        if(ingame&&MainFrame.principal.isVisible()){
+        if(ingame){
             try {
                 save=new ObjectOutputStream(new FileOutputStream("savegame.sav"));
                 save.writeObject(new FileData()); //Salva uma nova instância de FileData
@@ -60,8 +61,6 @@ public abstract class General{
             }
         }else if(!ingame){
             JOptionPane.showMessageDialog(null, "Não está em um jogo!");
-        }else{
-            JOptionPane.showMessageDialog(null, "Não pode salvar o jogo durante batalha!");
         }
     }
 
@@ -78,6 +77,11 @@ public abstract class General{
                 InfoChar.experiencia=loadedData.getExperiencia();
                 InfoChar.dinheiro=loadedData.getDinheiro();
                 InfoChar.hp=loadedData.getHp();
+                InfoChar.mp=loadedData.getMp();
+                InfoChar.maxHp=loadedData.getMaxHp();
+                InfoChar.maxMp=loadedData.getMaxMp();
+                InfoChar.defesa=loadedData.getDefesa();
+                InfoChar.nextLevel=loadedData.getNextLevel();
                 Historia.parteDaHistoria=loadedData.getHistoria();
                 //Atualiza a tela com os novos dados
                 ProgramInit.sairBatalha();

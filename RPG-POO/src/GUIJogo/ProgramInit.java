@@ -19,6 +19,7 @@ public class ProgramInit{
     }
 
     public static void entrarBatalha(String monster){ //white magic
+        PainelMenu.salvar.setEnabled(false);
         batalha=new PainelBatalha(monster); //magic motor
         principal.setVisible(false);
         batalha.setVisible(true);
@@ -26,6 +27,7 @@ public class ProgramInit{
     }
 
     public static void sairBatalha(){ //dark magic
+        PainelMenu.salvar.setEnabled(true);
         principal.setVisible(true);
         batalha.setVisible(false);
     }

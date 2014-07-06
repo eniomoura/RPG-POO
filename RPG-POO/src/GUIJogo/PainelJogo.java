@@ -34,7 +34,7 @@ public class PainelJogo extends JPanel{
 
     public static void atualizar(){ //Redefine a saída e as entradas da tela
         display.setText(Historia.consultaHistoria());
-        if(Historia.parteDaHistoria==-1){
+        if(Historia.parteDaHistoria==-1||!MainFrame.principal.isVisible()){
             textfield1.setVisible(false);
             button1.setVisible(false);
             button2.setVisible(false);
