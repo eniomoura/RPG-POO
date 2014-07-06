@@ -29,6 +29,7 @@ public class FileData implements Serializable{
         this.defesa=InfoChar.defesa;
         this.nextLevel=InfoChar.nextLevel;
         this.mp=InfoChar.mp;
+        this.level=InfoChar.level;
     }
 
     public String getClasse(){

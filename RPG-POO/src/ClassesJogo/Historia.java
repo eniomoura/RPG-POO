@@ -32,8 +32,8 @@ public class Historia{
             return ("<html><table>Partindo dali, já não há mais pistas do paradeiro do professor. Onde procurar?</table></html>");
         }else if(parteDaHistoria==8){ //História 5A (6A/6B)
             return ("<html><table>As portas do CAB estavam abertas, assim como boa parte das salas. Os laboratórios 104 e 105, estavam com as luzes acesas, o que desperta sua curiosidade.<br><br>Para qual deles você prefere se dirigir?</table></html>");
-        }else if(parteDaHistoria==9){ //História 5B (5B2)
-            return ("<html><table>Você chega ao Reuni. Nenhuma pessoa por ali, e o clima silencioso te deixa em alerta.</table></html>");
+        }else if(parteDaHistoria==9){ //História 5B (5B2/LojaReuni)
+            return ("<html><table>Você chega ao Reuni. Apenas o atendente está no balcão, deseja comprar algo?</table></html>");
         }else if(parteDaHistoria==10){ //História 5B2 (Luta -> 5B3)
             return ("<html><table>Você olha por baixo de uma das mesas, e sem se dar conta do que acontece, é atacad" + ("Masculino".equals(InfoChar.sexo) ? "o" : "a") + " por um Ponteiro Selvagem, que estava ali se alimentando de lágrimas de universitários.</table></html>");
         }else if(parteDaHistoria==11){ //História 5B3 (5A)
@@ -51,16 +51,13 @@ public class Historia{
         }else if(parteDaHistoria==17){ //História 8B (Luta -> 8B2)
             return ("<html><table>Na sala 204, estava o perigoso Stallman, que ao notar sua presença, apenas aperta uma tecla em um notebook que estava sobre uma das mesas, e salta pela janela subindo por um cabo de aço. O notebook se transforma em um robô gigante! Era uma cilada!</table></html>");
         }else if(parteDaHistoria==18){ //História 8B2 (9)
-            return ("<html><table>Modificando o código fonte do software do inimigo, você consegue desativá-lo, podendo seguir para a sala 303, que era o local para onde o vilão fugiu.</table></html>");
+            return ("<html><table>Modificando o código fonte do software do inimigo, você consegue desativá-lo, podendo seguir para a sala 303, que era o local para onde o vilão fugiu. Ou você pode passar no reuni antes.</table></html>");
         }else if(parteDaHistoria==19){ //História 9 (Luta -> Final)
             return ("<html><table>Lá estavam Richard Stallman e o professor Sandino.<br><br>Percebendo que você definitivamente era um problema para seus planos, Stallman resolve enfrentá-l" + ("Masculino".equals(InfoChar.sexo) ? "o" : "a") + " pessoalmente!<br><br>Você se prepara para o duelo.</table></html>");
         }else if(parteDaHistoria==20){
-            
             return ("<html><table>Após um árduo combate contra Stallman, você sai vitorios" + ("Masculino".equals(InfoChar.sexo) ? "o" : "a") + ", livrando o professor Sandino das garras do temível adversário, e podendo assim, apresentar seu trabalho de Programação Orientada a Objetos, que garantiu sua aprovação na disciplina.<br><br>E com isso, todos viveram felizes par... até o semestre seguinte.<br><br>FIM.</table></html>");
-        }else if(parteDaHistoria==21){
-            //NÃO MODIFICAR ESSE CASO!
-            //Ele impede o andamento da história além do programado, impedindo uma UnsupportedOperationException.
-            return ("");
+        }else if(parteDaHistoria==21){ //Loja
+            return("<html><table>==LOJA==<br>Estão vendendo:<br>1- Suco de Laranja (100 Moedas - Restaura todo o HP)<br>2- Coca 600ml (500 Moedas - +3 Força)<br>3- Capuccino (500 Moedas - +3 Inteligência)<br>4- Prato Feito (1000 Moedas - HP Máximo +60)<br>5- Pizza de Queijo (1000 Moedas - MP Máximo +60)</table><br></html>");
         }else{
             throw new UnsupportedOperationException("Um erro inesperado aconteceu.");
         }

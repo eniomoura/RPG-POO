@@ -11,39 +11,39 @@ public class Monstro{
     public Monstro(String Monstro){
         switch(Monstro) {
             case "Bando de Variáveis Desencapsuladas":
-                hp=7;
-                ataque=5;
-                defesa=6;
+                hp=40;
+                ataque=6;
+                defesa=5;
                 xpReward=300;
                 gpReward=300;
                 break;
             case "Ponteiro Selvagem":
-                hp=5;
-                ataque=7;
-                defesa=3;
-                xpReward=300;
-                gpReward=300;
+                hp=35;
+                ataque=8;
+                defesa=2;
+                xpReward=400;
+                gpReward=500;
                 break;
             case "Integral Perdida":
-                hp=5;
-                ataque=9;
-                defesa=2;
-                xpReward=300;
-                gpReward=300;
+                hp=50;
+                ataque=12;
+                defesa=4;
+                xpReward=500;
+                gpReward=500;
                 break;
             case "Robô Notebook":
-                hp=5;
-                ataque=6;
+                hp=55;
+                ataque=15;
                 defesa=4;
-                xpReward=300;
-                gpReward=300;
+                xpReward=600;
+                gpReward=600;
                 break;
             case "Richard Stallman":
-                hp=5;
-                ataque=3;
-                defesa=5;
-                xpReward=300;
-                gpReward=300;
+                hp=150;
+                ataque=20;
+                defesa=12;
+                xpReward=8000;
+                gpReward=8008;
                 break;
             case "procGen":
                 throw new UnsupportedOperationException("Monstros procedurais não foram implementados.");

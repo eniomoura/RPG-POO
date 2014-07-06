@@ -8,6 +8,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /*
@@ -60,9 +61,9 @@ public class PainelJogo extends JPanel{
         }else if(Historia.parteDaHistoria==2){
             textfield1.setVisible(false);
             button1.setText("Paladino");
-            button1.setToolTipText("O Paladino é capaz de desferir um ataque de grande força baseado em sua energia vital. Ele recebe um bônus inicial em defesa.");
+            button1.setToolTipText("O Paladino é capaz de desferir um ataque de grande força baseado em sua energia vital. Ele recebe um bônus inicial em defesa. Seus ataques mágicos gastam 1/2 da mana máxima.");
             button2.setText("Bruxo");
-            button2.setToolTipText("O Bruxo é capaz de se recompor magicamente depois de sofrer danos. Ele recebe um bônus inicial em MP.");
+            button2.setToolTipText("O Bruxo é capaz de se recompor magicamente depois de sofrer danos. Ele recebe um bônus inicial em MP. Seus ataques mágicos gastam 1/10 da mana máxima.");
             button1.setVisible(true);
             button2.setVisible(true);
         }else if(Historia.parteDaHistoria==3){
@@ -103,10 +104,10 @@ public class PainelJogo extends JPanel{
             button2.setVisible(true);
         }else if(Historia.parteDaHistoria==9){
             textfield1.setVisible(false);
-            button1.setText("Examinar o local");
-            button2.setText("");
+            button1.setText("Sim");
+            button2.setText("Não");
             button1.setVisible(true);
-            button2.setVisible(false);
+            button2.setVisible(true);
         }else if(Historia.parteDaHistoria==10){
             textfield1.setVisible(false);
             button1.setText("Lutar!");
@@ -158,15 +159,21 @@ public class PainelJogo extends JPanel{
         }else if(Historia.parteDaHistoria==18){
             textfield1.setVisible(false);
             button1.setText("Continuar");
-            button2.setText("");
+            button2.setText("Passar no Reuni, e depois ir.");
             button1.setVisible(true);
-            button2.setVisible(false);
+            button2.setVisible(true);
         }else if(Historia.parteDaHistoria==19){
             textfield1.setVisible(false);
             button1.setText("Lutar!");
             button2.setText("");
             button1.setVisible(true);
             button2.setVisible(false);
+        }else if(Historia.parteDaHistoria==21){
+            textfield1.setVisible(true);
+            button1.setVisible(true);
+            button2.setVisible(true);
+            button1.setText("Comprar");
+            button2.setText("Continuar");
         }else{
             textfield1.setVisible(false);
             button1.setVisible(false);
@@ -205,93 +212,157 @@ public class PainelJogo extends JPanel{
                     if(Historia.parteDaHistoria==0){
                         InfoChar.nome=textfield1.getText(); //obter nome do personagem
                         textfield1.setText("");
-                        ClassesJogo.Historia.parteDaHistoria=1;
+                        Historia.parteDaHistoria=1;
                     }else if(Historia.parteDaHistoria==1){
                         InfoChar.sexo="Masculino"; //homem
-                        ClassesJogo.Historia.parteDaHistoria=2;
+                        Historia.parteDaHistoria=2;
                     }else if(Historia.parteDaHistoria==2){
                         InfoChar.defesa+=2;
                         InfoChar.classe=("Masculino".equals(InfoChar.sexo) ? "Paladino" : "Paladina"); //paladin
-                        ClassesJogo.Historia.parteDaHistoria=3;
+                        Historia.parteDaHistoria=3;
                     }else if(Historia.parteDaHistoria==3){
                         InfoChar.forca+=5; //força
-                        ClassesJogo.Historia.parteDaHistoria=4;
+                        Historia.parteDaHistoria=4;
                     }else if(Historia.parteDaHistoria==4){
                         ProgramInit.entrarBatalha("Bando de Variáveis Desencapsuladas");
-                        ClassesJogo.Historia.parteDaHistoria=5;
+                        Historia.parteDaHistoria=5;
                     }else if(Historia.parteDaHistoria==5){//luta
-                        ClassesJogo.Historia.parteDaHistoria=7;
+                        Historia.parteDaHistoria=7;
                     }else if(Historia.parteDaHistoria==6){
                         InfoChar.inteligencia+=2;
                         ProgramInit.entrarBatalha("Bando de Variáveis Desencapsuladas");
-                        ClassesJogo.Historia.parteDaHistoria=5;
+                        Historia.parteDaHistoria=5;
                     }else if(Historia.parteDaHistoria==7){
-                        ClassesJogo.Historia.parteDaHistoria=8;
+                        Historia.parteDaHistoria=8;
                     }else if(Historia.parteDaHistoria==8){
-                        ClassesJogo.Historia.parteDaHistoria=12;
+                        Historia.parteDaHistoria=12;
                     }else if(Historia.parteDaHistoria==9){
-                        ClassesJogo.Historia.parteDaHistoria=10;
+                        Historia.parteDaHistoria=21;
                     }else if(Historia.parteDaHistoria==10){
-                        ClassesJogo.Historia.parteDaHistoria=11;
+                        Historia.parteDaHistoria=11;
                         ProgramInit.entrarBatalha("Ponteiro Selvagem");
                     }else if(Historia.parteDaHistoria==11){
-                        ClassesJogo.Historia.parteDaHistoria=8;
+                        Historia.parteDaHistoria=8;
                     }else if(Historia.parteDaHistoria==12){
-                        ClassesJogo.Historia.parteDaHistoria=14;
+                        Historia.parteDaHistoria=14;
                     }else if(Historia.parteDaHistoria==13){
                         InfoChar.forca+=3;
-                        ClassesJogo.Historia.parteDaHistoria=14;
+                        Historia.parteDaHistoria=14;
                     }else if(Historia.parteDaHistoria==14){
-                        ClassesJogo.Historia.parteDaHistoria=15;
+                        Historia.parteDaHistoria=15;
                     }else if(Historia.parteDaHistoria==15){
-                        ClassesJogo.Historia.parteDaHistoria=16;
+                        Historia.parteDaHistoria=16;
                         ProgramInit.entrarBatalha("Integral Perdida");
                     }else if(Historia.parteDaHistoria==16){
-                        ClassesJogo.Historia.parteDaHistoria=17;
+                        Historia.parteDaHistoria=17;
                     }else if(Historia.parteDaHistoria==17){
-                        ClassesJogo.Historia.parteDaHistoria=18;
+                        Historia.parteDaHistoria=18;
                         ProgramInit.entrarBatalha("Robô Notebook");
                     }else if(Historia.parteDaHistoria==18){
-                        ClassesJogo.Historia.parteDaHistoria=19;
+                        Historia.parteDaHistoria=19;
                     }else if(Historia.parteDaHistoria==19){
-                        ClassesJogo.Historia.parteDaHistoria=20;
+                        Historia.parteDaHistoria=20;
                         ProgramInit.entrarBatalha("Richard Stallman");
+                    }else if(Historia.parteDaHistoria==21){ //LOJA
+                        switch(textfield1.getText()){
+                            case "1":
+                                if(InfoChar.dinheiro>=100){
+                                    InfoChar.dinheiro-=100;
+                                    InfoChar.hp=InfoChar.maxHp;
+                                    textfield1.setText(null);
+                                    JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!");
+                                }else{
+                                    JOptionPane.showMessageDialog(null, "Não tem dinheiro o suficiente!");
+                                }
+                                break;
+                            case "2":
+                                if(InfoChar.dinheiro>=500){
+                                    InfoChar.forca+=3;
+                                    InfoChar.dinheiro-=500;
+                                    textfield1.setText(null);
+                                    JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!");
+                                }else{
+                                    JOptionPane.showMessageDialog(null, "Não tem dinheiro o suficiente!");
+                                }
+                                break;
+                            case "3":
+                                if(InfoChar.dinheiro>=500){
+                                    InfoChar.inteligencia+=3;
+                                    InfoChar.dinheiro-=500;
+                                    textfield1.setText(null);
+                                    JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!");
+                                }else{
+                                    JOptionPane.showMessageDialog(null, "Não tem dinheiro o suficiente!");
+                                }
+                                break;
+                            case "4":
+                                if(InfoChar.dinheiro>=1000){
+                                    InfoChar.maxHp+=60;
+                                    InfoChar.dinheiro-=1000;
+                                    textfield1.setText(null);
+                                    JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!");
+                                }else{
+                                    JOptionPane.showMessageDialog(null, "Não tem dinheiro o suficiente!");
+                                }
+                                break;
+                            case "5":
+                                if(InfoChar.dinheiro>=1000){
+                                    InfoChar.mp=InfoChar.maxMp+=60;
+                                    InfoChar.dinheiro-=1000;
+                                    textfield1.setText(null);
+                                    JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!");
+                                }else{
+                                    JOptionPane.showMessageDialog(null, "Não tem dinheiro o suficiente!");
+                                }
+                                break;
+                            default:
+                                JOptionPane.showMessageDialog(null, "Item não existe!");
+                                break;
+                        }
                     }else{
                     }
                 }else if(event.getSource()==button2){ //Caso pressionado o segundo botão...
                     if(Historia.parteDaHistoria==0){ //não há segundo botão
-                        ClassesJogo.Historia.parteDaHistoria=1;
+                        Historia.parteDaHistoria=1;
                     }else if(Historia.parteDaHistoria==1){
                         InfoChar.sexo="Feminino"; //mulher
-                        ClassesJogo.Historia.parteDaHistoria=2;
+                        Historia.parteDaHistoria=2;
                     }else if(Historia.parteDaHistoria==2){
                         InfoChar.maxMp=InfoChar.mp+=20;
                         InfoChar.classe=("Masculino".equals(InfoChar.sexo) ? "Bruxo" : "Bruxa"); //witch
-                        ClassesJogo.Historia.parteDaHistoria=3;
+                        Historia.parteDaHistoria=3;
                     }else if(Historia.parteDaHistoria==3){
                         InfoChar.inteligencia+=5; //inteligencia
-                        ClassesJogo.Historia.parteDaHistoria=4;
+                        Historia.parteDaHistoria=4;
                     }else if(Historia.parteDaHistoria==4){
-                        ClassesJogo.Historia.parteDaHistoria=6;
+                        Historia.parteDaHistoria=6;
                     }else if(Historia.parteDaHistoria==5){//não há segundo botão
                     }else if(Historia.parteDaHistoria==6){//não há segundo botão
                     }else if(Historia.parteDaHistoria==7){
-                        ClassesJogo.Historia.parteDaHistoria=9;
+                        Historia.parteDaHistoria=9;
                     }else if(Historia.parteDaHistoria==8){
-                        ClassesJogo.Historia.parteDaHistoria=13;
-                    }else if(Historia.parteDaHistoria==9){//não há segundo botão
+                        Historia.parteDaHistoria=13;
+                    }else if(Historia.parteDaHistoria==9){
+                            Historia.parteDaHistoria=10;
                     }else if(Historia.parteDaHistoria==10){//não há segundo botão
                     }else if(Historia.parteDaHistoria==11){//não há segundo botão
                     }else if(Historia.parteDaHistoria==12){//não há segundo botão
                     }else if(Historia.parteDaHistoria==13){//não há segundo botão
                     }else if(Historia.parteDaHistoria==13){//não há segundo botão
                     }else if(Historia.parteDaHistoria==14){
-                        ClassesJogo.Historia.parteDaHistoria=17;
+                        Historia.parteDaHistoria=17;
                     }else if(Historia.parteDaHistoria==15){//não há segundo botão
                     }else if(Historia.parteDaHistoria==16){//não há segundo botão
                     }else if(Historia.parteDaHistoria==17){//não há segundo botão
-                    }else if(Historia.parteDaHistoria==18){//não há segundo botão
+                    }else if(Historia.parteDaHistoria==18){
+                        Historia.parteDaHistoria=21;
                     }else if(Historia.parteDaHistoria==19){//não há segundo botão
+                    }else if(Historia.parteDaHistoria==21){
+                        if(InfoChar.experiencia>300){ //recompensa da primeira luta
+                            Historia.parteDaHistoria=19;
+                        }else{
+                            Historia.parteDaHistoria=10;
+                        }
                     }else{
                     }
                 }

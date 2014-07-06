@@ -17,7 +17,7 @@ public class MainFrame extends JFrame{
     MainFrame(){ //construtor da janela de jogo padrão
 
         //CONFIGURAÇÕES BÁSICAS DA JANELA
-        super("Object-Oriented Adventure");
+        super("Object-Oriented Adventure - Prepare to Die Edition");
         setLayout(new BorderLayout()); //awt
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 600);

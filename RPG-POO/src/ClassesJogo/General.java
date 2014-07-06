@@ -83,6 +83,7 @@ public abstract class General{
                 InfoChar.defesa=loadedData.getDefesa();
                 InfoChar.nextLevel=loadedData.getNextLevel();
                 Historia.parteDaHistoria=loadedData.getHistoria();
+                InfoChar.level=loadedData.getLevel();
                 //Atualiza a tela com os novos dados
                 ProgramInit.sairBatalha();
                 PainelJogo.atualizar();

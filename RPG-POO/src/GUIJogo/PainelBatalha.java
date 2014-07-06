@@ -115,8 +115,21 @@ public class PainelBatalha extends JPanel{
             panel1.setVisible(false);
             panel3.setVisible(false);
             panel2.setLayout(new FlowLayout());
-            caixaDeTexto.setText("<html><table><u><font size=45>GAME OVER</font></u></table></html>");
+            caixaDeTexto.setText("<html><table><u><font size=45>YOU DIED</font></u></table></html>");
         }
+        if(InfoChar.classe.startsWith("Paladin")){
+                    if(InfoChar.mp<InfoChar.inteligencia*5){
+                        magia.setEnabled(false);
+                    }else{
+                        magia.setEnabled(true);
+                    }
+                }else{
+                    if(InfoChar.mp<InfoChar.inteligencia){
+                        magia.setEnabled(false);
+                    }else{
+                        magia.setEnabled(true);
+                    }
+                }
         if(cdcounter>0){
             classe.setEnabled(false);
             classe.setText((InfoChar.classe.startsWith("Paladin") ? "Julgamento" : "Recompor-se")+" ("+Integer.toString(cdcounter)+")");
@@ -141,7 +154,11 @@ public class PainelBatalha extends JPanel{
             }else if(event.getSource()==magia){
                 //Cálculo de dano mágico: f(INT)=(random(0-INT)+ln(INT))^2
                 dano=(int) Math.sqrt(Math.pow(aleatorio.nextInt(InfoChar.inteligencia)+Math.log(InfoChar.inteligencia), 2));
-                InfoChar.mp-=dano-Math.round(dano/2); //Por alguma razão, Math.ceil não estava funcionando. Usei essa gambiarra.
+                if(InfoChar.classe.startsWith("Paladin")){
+                    InfoChar.mp-=InfoChar.inteligencia*5;
+                }else{
+                    InfoChar.mp-=InfoChar.inteligencia;
+                }
             }
             if(event.getSource()==classe){
                 if(InfoChar.classe.startsWith("Paladin")){
