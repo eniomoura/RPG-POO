@@ -64,7 +64,7 @@ public class PainelBatalha extends JPanel{
         atacar=new JButton("Atacar");
         atacar.setToolTipText("Ataque físico básico, baseado na sua força e na defesa do inimigo.");
         magia=new JButton("Magia");
-        magia.setToolTipText("Ataque mágico básico, baseado na sua inteligência e num fator aleatório. Para cada ponto de dano dado, perde-se meio ponto de mp, arredondado pra cima.");
+        magia.setToolTipText("Ataque mágico básico, baseado na sua inteligência e num fator aleatório. Custo de MP = INT para o bruxo, = INT*5 para o paladino.");
         if(InfoChar.classe==null){
             classe=new JButton("CLASS_NOT_FOUND");
         }else if(InfoChar.classe.startsWith("Paladin")){
