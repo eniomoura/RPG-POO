@@ -24,7 +24,6 @@ public class FileData implements Serializable{
         this.experiencia=InfoChar.experiencia;
         this.dinheiro=InfoChar.dinheiro;
         this.hp=InfoChar.hp;
-        this.decisao=Historia.decisao;
     }
 
     public String getClasse(){

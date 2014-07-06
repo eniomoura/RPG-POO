@@ -1,14 +1,11 @@
 package ClassesJogo;
 
-import ClassesJogo.InfoChar;
-
 /*
  * Essa classe tem a finalidade de retornar a saída de texto para a GUI.
  */
 public class Historia{
 
     public static int parteDaHistoria=-1;
-    public static int decisao;
 
     public static String consultaHistoria(){ //seleciona a saída para o usuário a ser exibida em GUIJogo.PainelJogo
        /*

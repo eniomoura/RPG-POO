@@ -39,7 +39,6 @@ public abstract class General{
         InfoChar.nome=null;
         InfoChar.sexo=null;
         InfoChar.classe=null;
-        Historia.decisao=0;
         PainelJogo.textfield1.setText(null);
         if(ingame){
             Historia.parteDaHistoria=0;
@@ -80,7 +79,6 @@ public abstract class General{
                 InfoChar.dinheiro=loadedData.getDinheiro();
                 InfoChar.hp=loadedData.getHp();
                 Historia.parteDaHistoria=loadedData.getHistoria();
-                Historia.decisao=loadedData.getDecisao();
                 //Atualiza a tela com os novos dados
                 ProgramInit.sairBatalha();
                 PainelJogo.atualizar();
