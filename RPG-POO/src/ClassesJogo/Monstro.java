@@ -45,8 +45,6 @@ public class Monstro{
                 xpReward=8000;
                 gpReward=8008;
                 break;
-            case "procGen":
-                throw new UnsupportedOperationException("Monstros procedurais não foram implementados.");
             default:
                 //MISSINGNO!
                 hp=9999;

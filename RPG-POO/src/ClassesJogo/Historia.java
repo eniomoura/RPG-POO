@@ -13,7 +13,7 @@ public class Historia{
         */
         
         if(parteDaHistoria==-1){
-            return "Bem vindo ao JOGO."; //você perdeu o jogo. malz ae.
+            return "Bem vindo ao JOGO.";
         }else if(parteDaHistoria==0){ //História 1 (Criação de classe -> 2)
             return ("<html><table> É o último dia de aula de POO, saindo do 263 e entrando no INF, você vê o professor Sandino ser raptado pelo malévolo Richard Stallman, ele o leva para o corredor dos laboratórios. Você precisa salvá-lo para ser aprovado na matéria. Qual seu nome?</table></html>");
         }else if(parteDaHistoria==1){ //inicio da criaçao de char placeholder

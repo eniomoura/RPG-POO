@@ -21,7 +21,6 @@ public class MainFrame extends JFrame{
         setLayout(new BorderLayout()); //awt
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 600);
-        //setLocationByPlatform(true); - Usando custom location, pq a posição padrão do sistema é meio baixa (para 1366x768)
         setLocation(250, 50); //custom location, ideal em resolução 1366x768
 
         //DISPOSIÇÃO DOS ELEMENTOS DA JANELA
