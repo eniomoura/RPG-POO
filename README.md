@@ -14,9 +14,11 @@ Ver o que já tínhamos pronto                            :: OK
 
 Criar um protótipo de GUI e jogar tudo fora             :: OK
 
-Criar um sistema de batalha e evolução de personagem    :: Parcialmente Completo
+Criar um sistema de batalha e evolução de personagem    :: Completo
 
 Criar uma história apresentável                         :: Completo
+
+Corrigir erros restantes e polir o jogo                 :: Iniciado
 
 Remover placeholders restantes e finalizar o código     :: Iniciado
 
