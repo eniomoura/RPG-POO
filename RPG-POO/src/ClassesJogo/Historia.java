@@ -1,5 +1,6 @@
 package ClassesJogo;
 
+
 /*
  * Essa classe tem a finalidade de retornar a saída de texto para a GUI.
  */
@@ -13,7 +14,7 @@ public class Historia{
         */
         
         if(parteDaHistoria==-1){
-            return "Bem vindo ao JOGO.";
+            return "<html><table align=center><tr align=center><font size=7>Object Oriented Adventure v1.0</font><br>THE GAME</tr><tr align=center><br><br><br><br><i>Desenvolvedores:<br> Enio Moura, Murilo Shindi e Douglas Tonetto.<i></tr><table></html>";
         }else if(parteDaHistoria==0){ //História 1 (Criação de classe -> 2)
             return ("<html><table> É o último dia de aula de POO, saindo do 263 e entrando no INF, você vê o professor Sandino ser raptado pelo malévolo Richard Stallman, ele o leva para o corredor dos laboratórios. Você precisa salvá-lo para ser aprovado na matéria. Qual seu nome?</table></html>");
         }else if(parteDaHistoria==1){ //inicio da criaçao de char placeholder
