@@ -47,7 +47,7 @@ public class Monstro{
                 hp=150;
                 ataque=20;
                 defesa=12;
-                xpReward=8000;
+                xpReward=100;
                 gpReward=8008;
                 break;
             default:
