@@ -20,6 +20,6 @@ Criar uma história apresentável                         :: OK
 
 Corrigir erros restantes e polir o jogo                 :: OK
 
-Remover placeholders restantes e finalizar o código     :: Parcialmente Completo
+Remover placeholders restantes e finalizar o código     :: OK
 
 Apresentação do trabalho                                ::
