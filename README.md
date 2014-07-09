@@ -22,4 +22,6 @@ Corrigir erros restantes e polir o jogo                 :: OK
 
 Remover placeholders restantes e finalizar o código     :: OK
 
-Apresentação do trabalho                                ::
+Apresentação do trabalho                                :: OK
+
+PROJETO CONCLUÍDO!
